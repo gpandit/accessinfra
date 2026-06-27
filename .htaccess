@@ -1,0 +1,22 @@
+DirectoryIndex index.php
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^about/?$ about.php [L]
+  RewriteRule ^contact/?$ contact.php [L]
+  RewriteRule ^government-departments/?$ government-departments.php [L]
+  RewriteRule ^blog/?$ blog.php [L]
+  RewriteRule ^blog/([a-z0-9-]+)/?$ blog-post.php?slug=$1 [L]
+</IfModule>
+
+# lib/.env and lib/*.php hold DB credentials and encryption keys — never serve them directly.
+<FilesMatch "\.(env)$">
+  Require all denied
+</FilesMatch>
+<IfModule mod_authz_core.c>
+  <Directory "lib">
+    Require all denied
+  </Directory>
+  <Directory "private_storage">
+    Require all denied
+  </Directory>
+</IfModule>
