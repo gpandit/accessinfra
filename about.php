@@ -39,6 +39,7 @@ body[data-lang="hi"] h1, body[data-lang="hi"] h2, body[data-lang="hi"] h3, body[
 .content-zoom { transition:zoom 0.2s ease; }
 </style>
 
+<script src="<?php echo url('assets/js/translations.js'); ?>"></script>
 <script type="text/babel">
 const { useState, useEffect, useRef } = React;
 const { DotMorph, AI_SHAPES } = window;
