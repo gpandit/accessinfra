@@ -1,7 +1,7 @@
 </main>
 
 <footer class="ai-footer">
-  <div class="ai-footer-brand"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra"></div>
+  <div class="ai-footer-brand"><img src="<?php echo e(asset_url('assets/img/logo.png')); ?>" alt="Access Infra"></div>
   <nav class="ai-footer-links">
     <a href="<?php echo e(url('index.php')); ?>">Home</a>
     <a href="<?php echo e(url('about.php')); ?>">About Us</a>

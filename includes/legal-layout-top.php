@@ -81,7 +81,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <nav class="ai-nav">
   <div class="ai-nav-inner">
-    <a class="ai-nav-brand" href="<?php echo e(url('index.php')); ?>"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra"></a>
+    <a class="ai-nav-brand" href="<?php echo e(url('index.php')); ?>"><img src="<?php echo e(asset_url('assets/img/logo.png')); ?>" alt="Access Infra"></a>
     <button class="ai-nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
     <ul class="ai-nav-links" id="navLinks">
       <li><a href="<?php echo e(url('index.php')); ?>">Home</a></li>

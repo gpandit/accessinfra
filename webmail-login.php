@@ -130,7 +130,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div>
     <div class="login-card">
       <div class="logo-space">
-        <img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra">
+        <img src="<?php echo e(asset_url('assets/img/logo.png')); ?>" alt="Access Infra">
       </div>
       <h1>Webmail Sign In</h1>
       <p class="sub">Access your Access Infra email account</p>

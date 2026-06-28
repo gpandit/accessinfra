@@ -31,6 +31,12 @@ define('SENDPULSE_SENDER_NAME', env_value('SENDPULSE_SENDER_NAME', 'Access Infra
 function url($path = '') {
     return SITE_URL . '/' . ltrim($path, '/');
 }
+function asset_url($path = '') {
+    $path = ltrim($path, '/');
+    $abs  = __DIR__ . '/../' . $path;
+    $v    = file_exists($abs) ? filemtime($abs) : '1';
+    return url($path) . '?v=' . $v;
+}
 function e($str) {
     return htmlspecialchars((string) $str, ENT_QUOTES, 'UTF-8');
 }
