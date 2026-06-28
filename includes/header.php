@@ -16,6 +16,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo e($page_title ?? 'Access Infra Consulting'); ?></title>
+<link rel="preload" href="<?php echo url('assets/fonts/Seraphine.otf'); ?>" as="font" type="font/otf" crossorigin>
 <link rel="icon" type="image/x-icon" href="<?php echo url('favicon.ico'); ?>">
 <link rel="icon" type="image/png" sizes="16x16" href="<?php echo url('assets/img/favicon-16x16.png'); ?>">
 <link rel="icon" type="image/png" sizes="32x32" href="<?php echo url('assets/img/favicon-32x32.png'); ?>">
