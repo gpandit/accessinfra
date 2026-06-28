@@ -115,8 +115,8 @@ function IndiaLogoBadge() {
     <div role="img" aria-label="Access Infra Consulting logo over a map of India"
       style={{ position:'relative', width:'100%', aspectRatio:'1/1', borderRadius:16, boxShadow:'var(--shadow)', overflow:'hidden' }}>
       <img src={INDIA_MAP_URL} alt="" aria-hidden="true" style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }} />
-      <div style={{ position:'absolute', top:16, right:16, display:'flex', flexDirection:'column', alignItems:'center', gap:6, background:'rgba(255,255,255,0.62)', backdropFilter:'blur(3px)', padding:'14px 20px', borderRadius:14, boxShadow:'var(--shadow-lg)' }}>
-        <img src={LOGO_URL} alt="Access Infra" style={{ width:'clamp(110px,12vw,160px)', height:'auto', display:'block', opacity:0.88 }} />
+      <div style={{ position:'absolute', top:16, right:16, display:'flex', flexDirection:'column', alignItems:'center', gap:6, background:'#fff', padding:'14px 20px', borderRadius:14, boxShadow:'var(--shadow-lg)' }}>
+        <img src={LOGO_URL} alt="Access Infra" style={{ width:'clamp(110px,12vw,160px)', height:'auto', display:'block' }} />
         <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:11, letterSpacing:'0.24em', textTransform:'uppercase', color:'#334155' }}>Consulting</span>
       </div>
     </div>
