@@ -149,7 +149,7 @@ window.TRANSLATIONS = {
       sendAnother: 'Send Another',
     },
     footer: {
-      copy: '© 2025 Access Infra Consulting. All rights reserved.',
+      copy: '© 2026 Access Infra Consulting. All rights reserved.',
     },
   },
 
@@ -299,7 +299,7 @@ window.TRANSLATIONS = {
       successDesc: 'ನಾವು ಆದಷ್ಟು ಬೇಗ ಪ್ರತಿಕ್ರಿಯಿಸುತ್ತೇವೆ. ಸಂಪರ್ಕಿಸಿದ್ದಕ್ಕೆ ಧನ್ಯವಾದ.',
       sendAnother: 'ಮತ್ತೊಂದು ಕಳುಹಿಸಿ',
     },
-    footer: { copy: '© 2025 ಆ್ಯಕ್ಸೆಸ್ ಇನ್‌ಫ್ರಾ ಕನ್ಸಲ್ಟಿಂಗ್. ಎಲ್ಲ ಹಕ್ಕುಗಳು ಕಾಯ್ದಿರಿಸಲಾಗಿವೆ.' },
+    footer: { copy: '© 2026 ಆ್ಯಕ್ಸೆಸ್ ಇನ್‌ಫ್ರಾ ಕನ್ಸಲ್ಟಿಂಗ್. ಎಲ್ಲ ಹಕ್ಕುಗಳು ಕಾಯ್ದಿರಿಸಲಾಗಿವೆ.' },
   },
 
   // ── HINDI ────────────────────────────────────────────────────────────────
@@ -448,6 +448,6 @@ window.TRANSLATIONS = {
       successDesc: 'हम जल्द से जल्द वापस आएंगे। संपर्क करने के लिए धन्यवाद।',
       sendAnother: 'एक और भेजें',
     },
-    footer: { copy: '© 2025 एक्सेस इन्फ्रा कंसल्टिंग। सर्वाधिकार सुरक्षित।' },
+    footer: { copy: '© 2026 एक्सेस इन्फ्रा कंसल्टिंग। सर्वाधिकार सुरक्षित।' },
   },
 };

@@ -87,7 +87,7 @@ const T = {
     ctaDesc:'Reach out to us to discuss how our lobbying relationships can open doors for your business across Karnataka and Telangana.',
     ctaBtn1:'Talk to Us',
     ctaBtn2:'Vendor Consulting →',
-    footerCopy:'© 2025 Access Infra Consulting. All rights reserved.',
+    footerCopy:'© 2026 Access Infra Consulting. All rights reserved.',
     states:[
       { name:'Karnataka', capital:'Bengaluru' },
       { name:'Telangana', capital:'Hyderabad' },
@@ -125,7 +125,7 @@ const T = {
     ctaH2:'ಈ ಇಲಾಖೆಗಳಿಗೆ ಪ್ರವೇಶ ಬೇಕೇ?',
     ctaDesc:'ನಮ್ಮ ಲಾಬಿ ಸಂಬಂಧಗಳು ನಿಮ್ಮ ವ್ಯವಹಾರಕ್ಕೆ ಹೇಗೆ ಅವಕಾಶ ತೆರೆಯಬಲ್ಲವು ಎಂದು ಚರ್ಚಿಸಲು ಸಂಪರ್ಕಿಸಿ.',
     ctaBtn1:'ನಮ್ಮೊಂದಿಗೆ ಮಾತಾಡಿ', ctaBtn2:'ವೆಂಡರ್ ಸಲಹೆ →',
-    footerCopy:'© 2025 ಆಕ್ಸೆಸ್ ಇನ್ಫ್ರಾ ಕನ್ಸಲ್ಟಿಂಗ್.',
+    footerCopy:'© 2026 ಆಕ್ಸೆಸ್ ಇನ್ಫ್ರಾ ಕನ್ಸಲ್ಟಿಂಗ್.',
     states:[ { name:'ಕರ್ನಾಟಕ', capital:'ಬೆಂಗಳೂರು' }, { name:'ತೆಲಂಗಾಣ', capital:'ಹೈದರಾಬಾದ್' } ],
     depts:[
       { id:'labour',    name:'ಕಾರ್ಮಿಕ ಮತ್ತು ಕಲ್ಯಾಣ ಮಂಡಳಿ', desc:'ಅಸಂಘಟಿತ ವಲಯದ ಕಾರ್ಮಿಕರ ಹಕ್ಕುಗಳ ರಕ್ಷಣೆ, ಕಲ್ಯಾಣ ನಿಧಿ ನಿರ್ವಹಣೆ ಮತ್ತು ಕನಿಷ್ಠ ವೇತನ ಜಾರಿ.', focus:['ಕಾರ್ಮಿಕ ನೋಂದಣಿ','ಕಲ್ಯಾಣ ನಿಧಿ','ಕಾರ್ಮಿಕ ತಪಾಸಣೆ','ದೂರು ಪೋರ್ಟಲ್','ಡಿಜಿಟಲ್ ವೇತನ ಮೇಲ್ವಿಚಾರಣೆ'] },
@@ -157,7 +157,7 @@ const T = {
     approachTag:'हमारा दृष्टिकोण', approachH2:'हम आपके लिए कैसे लॉबी करते हैं',
     ctaH2:'इन विभागों तक पहुँच चाहिए?', ctaDesc:'हमसे संपर्क करें।',
     ctaBtn1:'हमसे बात करें', ctaBtn2:'वेंडर परामर्श →',
-    footerCopy:'© 2025 एक्सेस इन्फ्रा कंसल्टिंग.',
+    footerCopy:'© 2026 एक्सेस इन्फ्रा कंसल्टिंग.',
     states:[ { name:'कर्नाटक', capital:'बेंगलुरु' }, { name:'तेलंगाना', capital:'हैदराबाद' } ],
     depts:[
       { id:'labour',    name:'श्रम एवं कल्याण बोर्ड', desc:'असंगठित क्षेत्र के श्रमिकों के अधिकारों की रक्षा।', focus:['श्रमिक पंजीकरण','कल्याण निधि','श्रम निरीक्षण','शिकायत पोर्टल','डिजिटल वेतन'] },
@@ -189,7 +189,7 @@ const T = {
     approachTag:'మా విధానం', approachH2:'మేము మీ కోసం ఎలా లాబీ చేస్తాం',
     ctaH2:'ఈ శాఖలకు ప్రాప్యత కావాలా?', ctaDesc:'మా బృందంతో మాట్లాడండి.',
     ctaBtn1:'మాతో మాట్లాడండి', ctaBtn2:'వెండర్ కన్సల్టింగ్ →',
-    footerCopy:'© 2025 యాక్సెస్ ఇన్‌ఫ్రా కన్సల్టింగ్.',
+    footerCopy:'© 2026 యాక్సెస్ ఇన్‌ఫ్రా కన్సల్టింగ్.',
     states:[ { name:'కర్ణాటక', capital:'బెంగళూరు' }, { name:'తెలంగాణ', capital:'హైదరాబాద్' } ],
     depts:[
       { id:'labour',    name:'లేబర్ & వెల్ఫేర్ బోర్డ్', desc:'అసంఘటిత కార్మికుల హక్కుల రక్షణ.', focus:['కార్మిక నమోదు','సంక్షేమ నిధి','లేబర్ తనిఖీ','ఫిర్యాదు పోర్టల్','డిజిటల్ వేతనం'] },
@@ -477,6 +477,11 @@ function Footer({ t, lang }) {
           ))}
         </div>
         <p style={{ color:'var(--text3)', fontSize:12 }}>{t.footerCopy}</p>
+      </div>
+      <div style={{ maxWidth:1280, margin:'14px auto 0', paddingTop:14, borderTop:'1px solid var(--border)', textAlign:'center' }}>
+        <p style={{ color:'var(--text3)', fontSize:11.5 }}>
+          Developed and maintained by <a href="https://aqualeo.co" target="_blank" rel="noopener noreferrer" style={{ color:'#1a56db', textDecoration:'none', fontWeight:600 }}>Aqualeo Digecom</a>
+        </p>
       </div>
     </footer>
   );

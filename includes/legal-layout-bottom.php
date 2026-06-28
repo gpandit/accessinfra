@@ -11,6 +11,7 @@
     <a href="<?php echo e(url('cookie-policy.php')); ?>">Cookie Policy</a>
   </nav>
   <p class="ai-footer-copy">&copy; <?php echo date('Y'); ?> Access Infra Consulting. All rights reserved.</p>
+  <p class="ai-footer-credit">Developed and maintained by <a href="https://aqualeo.co" target="_blank" rel="noopener noreferrer">Aqualeo Digecom</a></p>
 </footer>
 
 <script>

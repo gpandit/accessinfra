@@ -20,7 +20,7 @@ $scheme  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' 
 $host    = $_SERVER['HTTP_HOST'] ?? 'localhost';
 $dir     = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '')), '/');
 define('SITE_URL', $scheme . '://' . $host . $dir);
-define('ADMIN_EMAIL', env_value('ADMIN_EMAIL', 'contact@accessinfraconsulting.com'));
+define('ADMIN_EMAIL', env_value('ADMIN_EMAIL', 'hello@accessinfra.co.in'));
 
 // ── SendPulse (contact form delivery) ───────────────────────────────────────
 define('SENDPULSE_CLIENT_ID', env_value('SENDPULSE_CLIENT_ID'));

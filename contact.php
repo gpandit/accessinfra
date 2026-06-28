@@ -147,6 +147,7 @@ const LOGO_URL = SITE_URL + '/assets/img/logo.png';
 const PRIVACY  = SITE_URL + '/privacy-policy/';
 const COOKIEPOLICY = SITE_URL + '/cookie-policy/';
 const ADMIN_EMAIL  = '<?php echo esc_js( ADMIN_EMAIL ); ?>';
+const WHATSAPP_URL = 'https://wa.me/919113915713';
 
 const AI_STATUS    = '<?php echo esc_js( $status ); ?>';
 const AI_OLD       = <?php echo json_encode($old, JSON_HEX_TAG | JSON_HEX_APOS); ?>;
@@ -339,10 +340,10 @@ function ContactPage({ lang }) {
               </div>
             </div>
             <div style={{ display:'flex', alignItems:'center', gap:14, marginBottom:24 }}>
-              <div style={{ width:46, height:46, borderRadius:12, background:'rgba(26,86,219,0.12)', border:'1px solid rgba(26,86,219,0.25)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:19, flexShrink:0 }}>🌐</div>
+              <div style={{ width:46, height:46, borderRadius:12, background:'rgba(37,211,102,0.12)', border:'1px solid rgba(37,211,102,0.3)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:19, flexShrink:0 }}>💬</div>
               <div>
-                <div style={{ fontSize:12, color:'var(--text3)', fontWeight:500 }}>{t.websiteLabel}</div>
-                <a href={HOME} style={{ color:'var(--text)', fontSize:15, fontWeight:600, textDecoration:'none' }}>{SITE_URL.replace(/^https?:\/\//,'')}</a>
+                <div style={{ fontSize:12, color:'var(--text3)', fontWeight:500 }}>WhatsApp</div>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" style={{ color:'#25d366', fontSize:15, fontWeight:700, textDecoration:'none' }}>WhatsApp Us →</a>
               </div>
             </div>
             <div style={{ display:'flex', alignItems:'center', gap:14, marginBottom:24 }}>
@@ -430,6 +431,11 @@ function Footer({ lang }) {
           ))}
         </div>
         <p style={{ color:'var(--text3)', fontSize:12 }}>{t.copy}</p>
+      </div>
+      <div style={{ maxWidth:1280, margin:'14px auto 0', paddingTop:14, borderTop:'1px solid var(--border)', textAlign:'center' }}>
+        <p style={{ color:'var(--text3)', fontSize:11.5 }}>
+          Developed and maintained by <a href="https://aqualeo.co" target="_blank" rel="noopener noreferrer" style={{ color:'#1a56db', textDecoration:'none', fontWeight:600 }}>Aqualeo Digecom</a>
+        </p>
       </div>
     </footer>
   );

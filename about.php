@@ -107,6 +107,24 @@ function ContextImage({ label, gradient }) {
   );
 }
 
+function IndiaLogoBadge() {
+  const polys = AI_SHAPES.INDIA_STATE_POLYGONS;
+  return (
+    <div role="img" aria-label="Access Infra Consulting logo within the outline of India"
+      style={{ position:'relative', width:'100%', aspectRatio:'4/3', borderRadius:16, background:'linear-gradient(135deg,#1a56db14,#1e3a8a14)', boxShadow:'var(--shadow)', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden' }}>
+      <svg viewBox="10 10 180 130" preserveAspectRatio="xMidYMid meet" style={{ position:'absolute', width:'86%', height:'86%' }}>
+        {polys.map((poly,i) => (
+          <polygon key={i} points={poly.map(p=>p.join(',')).join(' ')} fill="rgba(26,86,219,0.1)" stroke="#1a56db" strokeWidth="0.6" strokeLinejoin="round" />
+        ))}
+      </svg>
+      <div style={{ position:'relative', display:'flex', flexDirection:'column', alignItems:'center', gap:8, background:'var(--surface)', padding:'18px 26px', borderRadius:14, boxShadow:'var(--shadow-lg)' }}>
+        <img src={LOGO_URL} alt="Access Infra" style={{ width:'clamp(140px,16vw,200px)', height:'auto', display:'block' }} />
+        <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:13, letterSpacing:'0.28em', textTransform:'uppercase', color:'var(--text2)' }}>Consulting</span>
+      </div>
+    </div>
+  );
+}
+
 function ContactItem({ icon, label, value, href }) {
   const inner = (
     <div style={{ display:'flex', alignItems:'center', gap:14 }}>
@@ -310,7 +328,7 @@ function About({ lang }) {
           </div>
         </Reveal>
         <Reveal delay={120}>
-          <ContextImage label="Access Infra team meeting with government department officials" gradient="linear-gradient(135deg,#1a56db22,#1e3a8a22)" />
+          <IndiaLogoBadge />
           <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:14, marginTop:14 }}>
             {t.cards.map((c,i) => (
               <div key={i} style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:14, padding:22, boxShadow:'var(--shadow)' }}>
@@ -613,6 +631,11 @@ function Footer({ lang }) {
           ))}
         </div>
         <p style={{ color:'var(--text3)', fontSize:12.5 }}>{t.footer.copy}</p>
+      </div>
+      <div style={{ maxWidth:1280, margin:'14px auto 0', paddingTop:14, borderTop:'1px solid var(--border)', textAlign:'center' }}>
+        <p style={{ color:'var(--text3)', fontSize:11.5 }}>
+          Developed and maintained by <a href="https://aqualeo.co" target="_blank" rel="noopener noreferrer" style={{ color:'#1a56db', textDecoration:'none', fontWeight:600 }}>Aqualeo Digecom</a>
+        </p>
       </div>
     </footer>
   );

@@ -284,7 +284,7 @@ function DotMorph({ shapes, polygons, fillRatio=0, labels, fullBleed, count=460,
     <div ref={wrapRef} role="img" aria-label={labels ? `Animated illustration cycling through: ${labels.join(', ')}` : 'Animated decorative illustration'} style={wrapStyle}>
       <canvas ref={canvasRef} style={{ position:'absolute', inset:0 }} />
       {labels && (
-        <div style={{ position:'absolute', right: fullBleed?22:'auto', left: fullBleed?'auto':18, bottom:18, background:'rgba(255,255,255,0.18)', backdropFilter:'blur(6px)', color:'#fff', fontSize:13, fontWeight:700, padding:'7px 14px', borderRadius:999, letterSpacing:'0.03em' }}>
+        <div style={{ position:'absolute', left: fullBleed?22:18, top: fullBleed?22:'auto', bottom: fullBleed?'auto':18, background:'rgba(255,255,255,0.18)', backdropFilter:'blur(6px)', color:'#fff', fontSize:13, fontWeight:700, padding:'7px 14px', borderRadius:999, letterSpacing:'0.03em' }}>
           {labels[shapeIdx]}
         </div>
       )}

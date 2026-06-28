@@ -91,7 +91,7 @@ const T = {
     ctaDesc:'Talk to our team and find out how we can help your company identify, pursue and win government contracts.',
     ctaBtn1:'Get Started',
     ctaBtn2:'View Govt. Departments →',
-    footerCopy:'© 2025 Access Infra Consulting. All rights reserved.',
+    footerCopy:'© 2026 Access Infra Consulting. All rights reserved.',
     activities:[
       { num:'01', accent:'#1a56db', subtitle:'Fit Assessment & Positioning', title:'Placement Advisory', desc:'We analyse your product and service offerings to identify the government departments, schemes and projects where your solutions are most relevant and will be accepted. We map your strengths to live procurement pipelines and help you position effectively.', points:['Department & scheme fit analysis','Competitive landscape mapping','Stakeholder alignment strategy','Entry-point identification'] },
       { num:'02', accent:'#1e3a8a', subtitle:'Eligibility & Compliance Checks', title:'Tender Qualification Advisory', desc:'Before you commit resources, we assess whether your company qualifies for a specific tender — reviewing eligibility criteria, turnover requirements, technical qualifications, and past-performance clauses — so you only pursue tenders you can win.', points:['Eligibility criteria review','Turnover & net-worth checks','Technical qualification gaps','Pre-bid query support'] },
@@ -117,7 +117,7 @@ const T = {
     ctaDesc:'ನಿಮ್ಮ ಕಂಪನಿ ಸರ್ಕಾರಿ ಟೆಂಡರ್‌ಗಳನ್ನು ಗುರುತಿಸಲು ಮತ್ತು ಗೆಲ್ಲಲು ನಾವು ಹೇಗೆ ಸಹಾಯ ಮಾಡಬಹುದು ಎಂದು ನಮ್ಮ ತಂಡದೊಂದಿಗೆ ಮಾತನಾಡಿ.',
     ctaBtn1:'ಪ್ರಾರಂಭಿಸಿ',
     ctaBtn2:'ಸರ್ಕಾರಿ ಇಲಾಖೆಗಳು ನೋಡಿ →',
-    footerCopy:'© 2025 ಆಕ್ಸೆಸ್ ಇನ್ಫ್ರಾ ಕನ್ಸಲ್ಟಿಂಗ್. ಎಲ್ಲ ಹಕ್ಕುಗಳೂ ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.',
+    footerCopy:'© 2026 ಆಕ್ಸೆಸ್ ಇನ್ಫ್ರಾ ಕನ್ಸಲ್ಟಿಂಗ್. ಎಲ್ಲ ಹಕ್ಕುಗಳೂ ಕಾಯ್ದಿರಿಸಲಾಗಿದೆ.',
     activities:[
       { num:'01', accent:'#1a56db', subtitle:'ಸ್ಥಾನ ನಿರ್ಣಯ ಮತ್ತು ಹೊಂದಾಣಿಕೆ', title:'ಪ್ಲೇಸ್‌ಮೆಂಟ್ ಸಲಹೆ', desc:'ನಿಮ್ಮ ಉತ್ಪನ್ನ ಮತ್ತು ಸೇವಾ ಕೊಡುಗೆಗಳನ್ನು ವಿಶ್ಲೇಷಿಸಿ ಸೂಕ್ತ ಸರ್ಕಾರಿ ಇಲಾಖೆಗಳನ್ನು ಗುರುತಿಸುತ್ತೇವೆ.', points:['ಇಲಾಖೆ ಮತ್ತು ಯೋಜನೆ ಹೊಂದಾಣಿಕೆ ವಿಶ್ಲೇಷಣೆ','ಸ್ಪರ್ಧಾತ್ಮಕ ಭೂದೃಶ್ಯ ನಕ್ಷೆ','ಮಧ್ಯಸ್ಥಗಾರ ಜೋಡಣೆ ತಂತ್ರ','ಪ್ರವೇಶ ಬಿಂದು ಗುರುತಿಸುವಿಕೆ'] },
       { num:'02', accent:'#1e3a8a', subtitle:'ಅರ್ಹತೆ ಮತ್ತು ಅನುಸರಣೆ ತಪಾಸಣೆ', title:'ಟೆಂಡರ್ ಅರ್ಹತಾ ಸಲಹೆ', desc:'ಸಂಪನ್ಮೂಲ ತೊಡಗಿಸುವ ಮೊದಲು ನಿಮ್ಮ ಕಂಪನಿ ನಿರ್ದಿಷ್ಟ ಟೆಂಡರ್‌ಗೆ ಅರ್ಹವೇ ಎಂದು ಮೌಲ್ಯಮಾಪನ ಮಾಡುತ್ತೇವೆ.', points:['ಅರ್ಹತಾ ಮಾನದಂಡ ಪರಿಶೀಲನೆ','ವಹಿವಾಟು ಮತ್ತು ನಿವ್ವಳ ಮೌಲ್ಯ ತಪಾಸಣೆ','ತಾಂತ್ರಿಕ ಅರ್ಹತಾ ಅಂತರ','ಬಿಡ್-ಪೂರ್ವ ಪ್ರಶ್ನೆ ಬೆಂಬಲ'] },
@@ -143,7 +143,7 @@ const T = {
     ctaDesc:'हमारी टीम से बात करें।',
     ctaBtn1:'शुरू करें',
     ctaBtn2:'सरकारी विभाग देखें →',
-    footerCopy:'© 2025 एक्सेस इन्फ्रा कंसल्टिंग. सर्वाधिकार सुरक्षित.',
+    footerCopy:'© 2026 एक्सेस इन्फ्रा कंसल्टिंग. सर्वाधिकार सुरक्षित.',
     activities:[
       { num:'01', accent:'#1a56db', subtitle:'उपयुक्तता मूल्यांकन', title:'प्लेसमेंट परामर्श', desc:'हम विभागों की पहचान करते हैं जहाँ आपके समाधान सबसे अधिक प्रासंगिक होंगे।', points:['विभाग उपयुक्तता विश्लेषण','प्रतिस्पर्धात्मक मानचित्रण','हितधारक रणनीति','प्रवेश बिंदु पहचान'] },
       { num:'02', accent:'#1e3a8a', subtitle:'पात्रता जाँच', title:'टेंडर योग्यता परामर्श', desc:'संसाधन लगाने से पहले पात्रता का मूल्यांकन।', points:['पात्रता समीक्षा','टर्नओवर जाँच','तकनीकी अंतराल','प्री-बिड सहायता'] },
@@ -169,7 +169,7 @@ const T = {
     ctaDesc:'మా బృందంతో మాట్లాడండి.',
     ctaBtn1:'ప్రారంభించండి',
     ctaBtn2:'ప్రభుత్వ శాఖలు →',
-    footerCopy:'© 2025 యాక్సెస్ ఇన్‌ఫ్రా కన్సల్టింగ్.',
+    footerCopy:'© 2026 యాక్సెస్ ఇన్‌ఫ్రా కన్సల్టింగ్.',
     activities:[
       { num:'01', accent:'#1a56db', subtitle:'అనుకూలత అంచనా', title:'ప్లేస్‌మెంట్ అడ్వైజరీ', desc:'మీ పరిష్కారాలకు అనువైన శాఖలను గుర్తిస్తాం.', points:['శాఖ అనుకూలత','పోటీ మ్యాపింగ్','వాటాదారుల వ్యూహం','ప్రవేశ బిందువు'] },
       { num:'02', accent:'#1e3a8a', subtitle:'అర్హత తనిఖీలు', title:'టెండర్ అర్హతా అడ్వైజరీ', desc:'వనరులు పెట్టుబడి పెట్టే ముందు అర్హత అంచనా.', points:['అర్హతా సమీక్ష','టర్నోవర్ తనిఖీ','సాంకేతిక అంతరాలు','ప్రి-బిడ్ సహాయం'] },
@@ -470,6 +470,11 @@ function Footer({ t, lang }) {
           ))}
         </div>
         <p style={{ color:'var(--text3)', fontSize:12 }}>{t.footerCopy}</p>
+      </div>
+      <div style={{ maxWidth:1280, margin:'14px auto 0', paddingTop:14, borderTop:'1px solid var(--border)', textAlign:'center' }}>
+        <p style={{ color:'var(--text3)', fontSize:11.5 }}>
+          Developed and maintained by <a href="https://aqualeo.co" target="_blank" rel="noopener noreferrer" style={{ color:'#1a56db', textDecoration:'none', fontWeight:600 }}>Aqualeo Digecom</a>
+        </p>
       </div>
     </footer>
   );

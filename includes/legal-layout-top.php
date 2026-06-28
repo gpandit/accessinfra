@@ -57,6 +57,8 @@
   .ai-footer-links a { color: var(--text3); text-decoration: none; font-size: 0.85rem; }
   .ai-footer-links a:hover { color: var(--navy); }
   .ai-footer-copy { font-size: 0.78rem; color: var(--text3); width: 100%; }
+  .ai-footer-credit { font-size: 0.74rem; color: var(--text3); width: 100%; text-align: center; padding-top: 0.75rem; margin-top: 0.5rem; border-top: 1px solid var(--border); }
+  .ai-footer-credit a { color: var(--accent, #1a56db); text-decoration: none; font-weight: 600; }
 </style>
 </head>
 <body>
