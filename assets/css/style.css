@@ -2,12 +2,12 @@
 * { box-sizing: border-box; }
 body { margin: 0; }
 
-/* Miloner — trial heading font (English only). Sora stays as the fallback
+/* Seraphine — trial heading font (English only). Sora stays as the fallback
    in every font-family stack so it's a one-line revert if this doesn't
-   test well: just drop 'Miloner', from each heading rule. */
+   test well: just drop 'Seraphine', from each heading rule. */
 @font-face {
-  font-family: 'Miloner';
-  src: url('../fonts/Miloner-Medium.ttf') format('truetype');
+  font-family: 'Seraphine';
+  src: url('../fonts/Seraphine.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;

@@ -22,11 +22,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="apple-touch-icon" sizes="180x180" href="<?php echo url('assets/img/apple-touch-icon.png'); ?>">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
 <style>
-  /* Miloner — trial heading font (English only). Sora stays as the fallback
+  /* Seraphine — trial heading font (English only). Sora stays as the fallback
      so it's a one-line revert if this doesn't test well. */
   @font-face {
-    font-family: 'Miloner';
-    src: url('<?php echo url('assets/fonts/Miloner-Medium.ttf'); ?>') format('truetype');
+    font-family: 'Seraphine';
+    src: url('<?php echo url('assets/fonts/Seraphine.otf'); ?>') format('opentype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
@@ -40,7 +40,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   html { scroll-behavior: smooth; }
   body { font-family:'Inter',sans-serif; color:var(--text); background:var(--bg); line-height:1.7; }
-  h1, h2, h3 { font-family:'Miloner','Sora',sans-serif; font-weight:800; color:var(--text); }
+  h1, h2, h3 { font-family:'Seraphine','Sora',sans-serif; font-weight:800; color:var(--text); }
 
   .ai-nav { position: sticky; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
   .ai-nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }

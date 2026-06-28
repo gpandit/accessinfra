@@ -120,7 +120,7 @@ html { scroll-behavior: smooth; }
 body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); transition:background 0.3s,color 0.3s; line-height:1.6; overflow-x:hidden; }
 body[data-lang="kn"] { font-family:'Noto Sans Kannada',sans-serif; }
 body[data-lang="hi"] { font-family:'Noto Sans Devanagari',sans-serif; }
-h1, h2, h3, h4 { font-family:'Miloner','Sora',sans-serif; line-height:1.2; }
+h1, h2, h3, h4 { font-family:'Seraphine','Sora',sans-serif; line-height:1.2; }
 body[data-lang="kn"] h1, body[data-lang="kn"] h2, body[data-lang="kn"] h3, body[data-lang="kn"] h4 { font-family:'Noto Sans Kannada',sans-serif; }
 body[data-lang="hi"] h1, body[data-lang="hi"] h2, body[data-lang="hi"] h3, body[data-lang="hi"] h4 { font-family:'Noto Sans Devanagari',sans-serif; }
 ::selection { background:#1a56db33; }
