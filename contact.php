@@ -93,439 +93,373 @@ if ($status === 'error') {
 }
 
 $page_title = 'Contact — Access Infra';
+require __DIR__ . '/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title><?php echo e($page_title); ?></title>
-<link rel="icon" type="image/x-icon" href="<?php echo url('favicon.ico'); ?>">
-<link rel="icon" type="image/png" sizes="32x32" href="<?php echo url('assets/img/favicon-32x32.png'); ?>">
-<link rel="apple-touch-icon" sizes="180x180" href="<?php echo url('assets/img/apple-touch-icon.png'); ?>">
+<div id="root"></div>
+
 <style>
-  /* ── Reset / Base ── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --navy: #0c1f3f;
-    --navy-mid: #1d4ed8;
-    --blue: #1d4ed8;
-    --accent: #1a56db;
-    --teal: #1e3a8a;
-    --gold: #f59e0b;
-    --text: #e2e8f0;
-    --text-muted: #94a3b8;
-    --border: rgba(255,255,255,0.08);
-    --card-bg: rgba(255,255,255,0.04);
-    --card-hover: rgba(255,255,255,0.07);
-    --radius: 12px;
-    --font-main: 'Sora', 'Inter', sans-serif;
-  }
-  html { font-size: 16px; }
-  body {
-    font-family: var(--font-main);
-    background: var(--navy);
-    color: var(--text);
-    min-height: 100vh;
-  }
-
-  /* ── Nav ── */
-  .ai-nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(12,31,63,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    height: 64px;
-  }
-  .ai-nav-inner {
-    max-width: 1280px; margin: 0 auto; padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 64px;
-  }
-  body.admin-bar .ai-nav { top: 32px; }
-  .ai-nav-brand {
-    display: flex; align-items: center;
-    text-decoration: none;
-  }
-  .ai-nav-brand img { height: 38px; width: auto; display: block; }
-  .ai-nav-links { display: flex; gap: 0.25rem; list-style: none; align-items: center; }
-  .ai-nav-links a {
-    color: var(--text-muted); text-decoration: none;
-    padding: 0.45rem 0.85rem; border-radius: 6px;
-    font-size: 0.875rem; font-weight: 500;
-    transition: color 0.2s, background 0.2s;
-  }
-  .ai-nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
-  .ai-nav-links a.active { color: var(--accent); font-weight: 700; background: rgba(26,86,219,0.12); }
-  .ai-nav-toggle { display: none; background: none; border: none; cursor: pointer; color: #fff; }
-
-  /* ── Page wrapper ── */
-  .contact-page {
-    padding-top: 64px;
-    min-height: 100vh;
-    background: linear-gradient(135deg, var(--navy) 0%, #0a2a6b 50%, #0c1f3f 100%);
-  }
-  body.admin-bar .contact-page { padding-top: 96px; }
-
-  /* ── Hero strip ── */
-  .contact-hero {
-    padding: 4rem 2rem 3rem;
-    text-align: center;
-    background: linear-gradient(135deg,#0c1f3f 0%,#1d4ed8 55%,#1a56db 100%);
-    border-bottom: 1px solid var(--border);
-  }
-  .contact-hero h1 {
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
-    font-weight: 800; letter-spacing: -0.03em;
-    color: #fff;
-    margin-bottom: 0.75rem;
-  }
-  .contact-hero p { color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto; font-size: 1rem; }
-
-  /* ── Status banners ── */
-  .ai-status-banner {
-    max-width: 960px; margin: 2rem auto 0; padding: 1rem 1.5rem;
-    border-radius: var(--radius); font-size: 0.95rem; display: flex;
-    align-items: center; gap: 0.75rem;
-  }
-  .ai-status-banner.success {
-    background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #6ee7b7;
-  }
-  .ai-status-banner.error {
-    background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5;
-  }
-  .ai-status-banner .icon { font-size: 1.25rem; flex-shrink: 0; }
-
-  /* ── Main grid ── */
-  .contact-grid {
-    max-width: 960px; margin: 3rem auto; padding: 0 1.5rem;
-    display: grid; grid-template-columns: 1fr 1.6fr; gap: 2.5rem;
-  }
-  @media (max-width: 700px) {
-    .contact-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ── Info column ── */
-  .contact-info h2 {
-    font-size: 1.35rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem;
-  }
-  .contact-info .tagline { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.6; }
-  .info-item {
-    display: flex; gap: 1rem; align-items: flex-start;
-    margin-bottom: 1.5rem;
-  }
-  .info-icon {
-    width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
-    background: rgba(26,86,219,0.15); border: 1px solid rgba(26,86,219,0.25);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-  }
-  .info-text { flex: 1; }
-  .info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.2rem; }
-  .info-value { color: #fff; font-size: 0.95rem; font-weight: 500; text-decoration: none; }
-  .info-value:hover { color: var(--teal); }
-
-  .services-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
-  .chip {
-    font-size: 0.75rem; padding: 0.35rem 0.75rem; border-radius: 20px;
-    background: rgba(30,58,138,0.12); border: 1px solid rgba(30,58,138,0.25);
-    color: var(--teal); font-weight: 500;
-  }
-
-  /* ── Form card ── */
-  .contact-form-card {
-    background: var(--card-bg); border: 1px solid var(--border);
-    border-radius: var(--radius); padding: 2rem;
-    backdrop-filter: blur(8px);
-  }
-  .contact-form-card h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; }
-
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
-
-  .field { margin-bottom: 1.1rem; }
-  .field label {
-    display: block; font-size: 0.8rem; font-weight: 600;
-    color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em;
-    margin-bottom: 0.4rem;
-  }
-  .field label .req { color: var(--teal); margin-left: 2px; }
-  .field input, .field select, .field textarea {
-    width: 100%; background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 8px; padding: 0.7rem 0.9rem;
-    color: #fff; font-family: var(--font-main); font-size: 0.9rem;
-    outline: none; transition: border-color 0.2s, background 0.2s;
-    -webkit-appearance: none;
-  }
-  .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.25); }
-  .field input:focus, .field select:focus, .field textarea:focus {
-    border-color: var(--accent); background: rgba(26,86,219,0.06);
-  }
-  .field select { cursor: pointer; }
-  .field select option { background: var(--navy-mid); color: #fff; }
-  .field textarea { resize: vertical; min-height: 130px; }
-
-  .submit-btn {
-    width: 100%; padding: 0.9rem;
-    background: linear-gradient(135deg, var(--accent) 0%, var(--teal) 100%);
-    border: none; border-radius: 8px; color: #fff;
-    font-family: var(--font-main); font-size: 0.95rem; font-weight: 700;
-    cursor: pointer; letter-spacing: 0.02em;
-    transition: opacity 0.2s, transform 0.15s;
-  }
-  .submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
-  .submit-btn:active { transform: translateY(0); }
-
-  .form-disclaimer {
-    margin-top: 0.75rem; font-size: 0.75rem; color: var(--text-muted);
-    text-align: center;
-  }
-
-  /* ── Footer ── */
-  .ai-footer {
-    background: var(--navy-mid); border-top: 1px solid var(--border);
-    padding: 2rem 2rem 1.5rem; margin-top: 4rem;
-    display: flex; flex-wrap: wrap; gap: 1rem;
-    align-items: center; justify-content: space-between;
-  }
-  .ai-footer-brand { display: flex; align-items: center; }
-  .ai-footer-brand img { height: 28px; width: auto; display: block; }
-  .ai-footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-  .ai-footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; }
-  .ai-footer-links a:hover { color: #fff; }
-  .ai-footer-copy { font-size: 0.78rem; color: var(--text-muted); width: 100%; }
-
-  /* ── Mobile nav ── */
-  @media (max-width: 640px) {
-    .ai-nav-links { display: none; }
-    .ai-nav-toggle { display: block; }
-    .ai-nav-links.open {
-      display: flex; flex-direction: column;
-      position: fixed; top: 64px; left: 0; right: 0;
-      background: rgba(12,31,63,0.98); padding: 1rem;
-      border-bottom: 1px solid var(--border); gap: 0.25rem;
-    }
-    body.admin-bar .ai-nav-links.open { top: 96px; }
-  }
-
-  /* ── Scroll reveal ── */
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
-  .reveal.in-view { opacity: 1; transform: translateY(0); }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-  }
-
-  /* ── Contact context image ── */
-  .contact-image {
-    width: 100%; aspect-ratio: 4/3; border-radius: var(--radius);
-    background: linear-gradient(135deg, rgba(26,86,219,0.18), rgba(30,58,138,0.18));
-    border: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 1.5rem;
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #0c1f3f; --blue: #1a56db; --teal: #1e3a8a;
+  --bg: #ffffff; --bg2: #f1f5f9; --bg3: #e2e8f0;
+  --surface: #ffffff; --surface2: #f8fafc;
+  --text: #0f172a; --text2: #334155; --text3: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 24px rgba(12,31,63,0.08);
+  --shadow-lg: 0 12px 48px rgba(12,31,63,0.14);
+}
+[data-theme="dark"] {
+  --bg: #080f1e; --bg2: #0d1a30; --bg3: #132040;
+  --surface: #0f1f3d; --surface2: #132040;
+  --text: #f1f5f9; --text2: #cbd5e1; --text3: #94a3b8;
+  --border: #1e3254;
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
+}
+html { scroll-behavior: smooth; }
+body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); transition:background 0.3s,color 0.3s; line-height:1.6; overflow-x:hidden; }
+body[data-lang="kn"] { font-family:'Noto Sans Kannada',sans-serif; }
+body[data-lang="hi"] { font-family:'Noto Sans Devanagari',sans-serif; }
+h1, h2, h3, h4 { font-family:'Sora',sans-serif; line-height:1.2; }
+body[data-lang="kn"] h1, body[data-lang="kn"] h2, body[data-lang="kn"] h3, body[data-lang="kn"] h4 { font-family:'Noto Sans Kannada',sans-serif; }
+body[data-lang="hi"] h1, body[data-lang="hi"] h2, body[data-lang="hi"] h3, body[data-lang="hi"] h4 { font-family:'Noto Sans Devanagari',sans-serif; }
+::selection { background:#1a56db33; }
+::-webkit-scrollbar { width:6px; }
+::-webkit-scrollbar-track { background:var(--bg2); }
+::-webkit-scrollbar-thumb { background:var(--blue); border-radius:3px; }
+@media (max-width:900px) { .desktop-nav { display:none !important; } .hamburger { display:flex !important; } .desktop-controls { display:none !important; } }
+@media (max-width:700px) { .contact-grid-cols { grid-template-columns:1fr !important; } }
+@media (max-width:500px) { .contact-form-row { grid-template-columns:1fr !important; } }
+.content-zoom { transition:zoom 0.2s ease; }
 </style>
-</head>
-<body>
-<script>
-  window.AI_PRIVACY_POLICY_URL = '<?php echo esc_js( url('privacy-policy.php') ); ?>';
-  window.AI_COOKIE_POLICY_URL  = '<?php echo esc_js( url('cookie-policy.php') ); ?>';
-</script>
-<script src="<?php echo url('assets/js/cookie-consent.js'); ?>"></script>
 
-<nav class="ai-nav">
-  <div class="ai-nav-inner">
-    <a class="ai-nav-brand" href="<?php echo e(url('index.php')); ?>"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra"></a>
-    <button class="ai-nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
-    <ul class="ai-nav-links" id="navLinks">
-      <li><a href="<?php echo e(url('index.php')); ?>">Home</a></li>
-      <li><a href="<?php echo e(url('about.php#services')); ?>">Services</a></li>
-      <li><a href="<?php echo e(url('about.php#smart-school')); ?>">Smart School</a></li>
-      <li><a href="<?php echo e(url('about.php#case-studies')); ?>">Case Studies</a></li>
-      <li><a href="<?php echo e(url('government-departments.php')); ?>">Government Departments</a></li>
-      <li><a href="<?php echo e(url('about.php')); ?>">About Us</a></li>
-      <li><a href="<?php echo e(url('contact.php')); ?>" class="active">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+<script src="<?php echo url('assets/js/translations.js'); ?>"></script>
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+const T = window.TRANSLATIONS;
 
-<div class="contact-page">
+const SITE_URL = '<?php echo esc_js( SITE_URL ); ?>';
+const HOME     = SITE_URL + '/';
+const ABOUT    = SITE_URL + '/about/';
+const GOVT     = SITE_URL + '/government-departments/';
+const CONTACT  = SITE_URL + '/contact/';
+const LOGO_URL = SITE_URL + '/assets/img/logo.png';
+const PRIVACY  = SITE_URL + '/privacy-policy/';
+const COOKIEPOLICY = SITE_URL + '/cookie-policy/';
+const ADMIN_EMAIL  = '<?php echo esc_js( ADMIN_EMAIL ); ?>';
 
-  <div class="contact-hero">
-    <h1>Contact Us</h1>
-    <p>Ready to partner with Access Infra? Reach out and we'll respond within one business day.</p>
-  </div>
+const AI_STATUS    = '<?php echo esc_js( $status ); ?>';
+const AI_OLD       = <?php echo json_encode($old, JSON_HEX_TAG | JSON_HEX_APOS); ?>;
+const AI_CSRF      = '<?php echo esc_js( $ai_contact_token ); ?>';
+const AI_FORM_ACTION = '<?php echo esc_js( url('contact.php') ); ?>';
 
-  <?php if ( $status === 'sent' ) : ?>
-  <div class="ai-status-banner success" style="max-width:960px;margin:2rem auto 0;padding:1rem 1.5rem;">
-    <span class="icon">✅</span>
-    <div><strong>Message sent!</strong> Thank you for reaching out. We'll be in touch within one business day. Check your inbox for a confirmation copy.</div>
-  </div>
-  <?php elseif ( $status === 'error' ) : ?>
-  <div class="ai-status-banner error" style="max-width:960px;margin:2rem auto 0;padding:1rem 1.5rem;">
-    <span class="icon">⚠️</span>
-    <div><strong>Please fill in all required fields</strong> and try again. If the problem persists, email us directly.</div>
-  </div>
-  <?php elseif ( $status === 'mailfail' ) : ?>
-  <div class="ai-status-banner error" style="max-width:960px;margin:2rem auto 0;padding:1rem 1.5rem;">
-    <span class="icon">❌</span>
-    <div><strong>Server error — message not delivered.</strong> Please email us directly at <a href="mailto:contact@accessinfra.in" style="color:inherit;text-decoration:underline;">contact@accessinfra.in</a>.</div>
-  </div>
-  <?php endif; ?>
+const FS_STEPS = [
+  { label:'A',   zoom:1,    title:'Default size' },
+  { label:'A+',  zoom:1.12, title:'Large size' },
+  { label:'A++', zoom:1.26, title:'Extra large size' },
+];
+const LANGS = [
+  { code:'en', label:'EN', full:'English' },
+  { code:'kn', label:'ಕನ್ನಡ', full:'ಕನ್ನಡ' },
+  { code:'hi', label:'हि', full:'हिंदी' },
+];
 
-  <div class="contact-grid">
+function Tag({ children, color='blue', light=false }) {
+  const bg  = color==='teal'?(light?'rgba(30,58,138,0.2)':'rgba(30,58,138,0.1)'):(light?'rgba(26,86,219,0.2)':'rgba(26,86,219,0.1)');
+  const col = color==='teal'?'#1e3a8a':(light?'#93c5fd':'#1a56db');
+  return <span style={{ display:'inline-block', background:bg, color:col, fontSize:12, fontWeight:700, letterSpacing:'0.06em', textTransform:'uppercase', padding:'4px 12px', borderRadius:999 }}>{children}</span>;
+}
 
-    <!-- Info column -->
-    <div class="contact-info reveal">
-      <div class="contact-image" role="img" aria-label="Illustration of the Access Infra team available for vendor and government enquiries">
-        <span style="font-size:2.5rem;" aria-hidden="true">🤝</span>
-        <!-- placeholder — replace with a real photo of the team or office -->
-      </div>
-      <h2>Get in Touch</h2>
-      <p class="tagline">We help vendors, government departments, and institutions navigate infrastructure partnerships across Karnataka and Telangana.</p>
-
-      <div class="info-item">
-        <div class="info-icon">📧</div>
-        <div class="info-text">
-          <div class="info-label">Email</div>
-          <a class="info-value" href="mailto:contact@accessinfra.in">contact@accessinfra.in</a>
+function LangMenu({ lang, setLang }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    const fn = e => { if(ref.current && !ref.current.contains(e.target)) setOpen(false); };
+    document.addEventListener('mousedown', fn);
+    return () => document.removeEventListener('mousedown', fn);
+  }, []);
+  const current = LANGS.find(l => l.code===lang);
+  return (
+    <div ref={ref} style={{ position:'relative' }}>
+      <button onClick={()=>setOpen(o=>!o)} style={{ display:'flex', alignItems:'center', gap:6, background:'var(--bg2)', border:'1.5px solid var(--border)', borderRadius:8, padding:'6px 10px', cursor:'pointer', color:'var(--text2)', fontSize:13, fontWeight:600, fontFamily:'Inter,sans-serif', transition:'border-color 0.2s' }}
+        onMouseEnter={e=>e.currentTarget.style.borderColor='#1a56db'} onMouseLeave={e=>e.currentTarget.style.borderColor='var(--border)'}>
+        🌐 {current.label}
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2"><polyline points={open?'2,8 6,4 10,8':'2,4 6,8 10,4'}/></svg>
+      </button>
+      {open && (
+        <div style={{ position:'absolute', top:'calc(100% + 6px)', right:0, zIndex:200, background:'var(--surface)', border:'1px solid var(--border)', borderRadius:10, boxShadow:'var(--shadow-lg)', overflow:'hidden', minWidth:130 }}>
+          {LANGS.map(l => (
+            <button key={l.code} onClick={()=>{ setLang(l.code); setOpen(false); }} style={{ display:'block', width:'100%', textAlign:'left', padding:'10px 16px', background:lang===l.code?'var(--bg2)':'transparent', border:'none', cursor:'pointer', color:lang===l.code?'#1a56db':'var(--text2)', fontSize:14, fontWeight:lang===l.code?700:400, fontFamily:'Inter,sans-serif', transition:'background 0.15s' }}
+              onMouseEnter={e=>{ if(lang!==l.code) e.currentTarget.style.background='var(--bg2)'; }} onMouseLeave={e=>{ if(lang!==l.code) e.currentTarget.style.background='transparent'; }}>
+              <span style={{ marginRight:8 }}>{l.label}</span>
+              <span style={{ color:'var(--text3)', fontSize:12 }}>{l.full}</span>
+            </button>
+          ))}
         </div>
-      </div>
-
-      <div class="info-item">
-        <div class="info-icon">🌐</div>
-        <div class="info-text">
-          <div class="info-label">Website</div>
-          <a class="info-value" href="<?php echo e(url('index.php')); ?>"><?php echo e(preg_replace('#^https?://#', '', SITE_URL)); ?></a>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <div class="info-icon">📍</div>
-        <div class="info-text">
-          <div class="info-label">Presence</div>
-          <span class="info-value">Karnataka &amp; Telangana, India</span>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <div class="info-icon">📱</div>
-        <div class="info-text">
-          <div class="info-label">WhatsApp / Phone</div>
-          <span class="info-value">Available on request</span>
-        </div>
-      </div>
-
-      <div class="services-chips">
-        <span class="chip">Vendor Scouting</span>
-        <span class="chip">Compliance &amp; Licensing</span>
-        <span class="chip">Bid &amp; Tender Support</span>
-        <span class="chip">Stakeholder Engagement</span>
-        <span class="chip">Project Monitoring</span>
-      </div>
+      )}
     </div>
+  );
+}
 
-    <!-- Form column -->
-    <div class="contact-form-card reveal">
-      <h3>Send us a Message</h3>
-      <form method="POST" action="<?php echo e(url('contact.php')); ?>">
-        <input type="hidden" name="ai_contact_token" value="<?php echo e($ai_contact_token); ?>">
-        <input type="hidden" name="ai_contact_submit" value="1">
+function FontSizeBtn({ fsIdx, cycleFontSize }) {
+  const step = FS_STEPS[fsIdx];
+  return (
+    <button onClick={cycleFontSize} title={step.title} style={{ display:'flex', alignItems:'center', gap:4, background:'var(--bg2)', border:'1.5px solid var(--border)', borderRadius:8, padding:'5px 10px', cursor:'pointer', color:'var(--text2)', fontFamily:'Sora,sans-serif', fontWeight:700, transition:'border-color 0.2s', lineHeight:1, whiteSpace:'nowrap' }}
+      onMouseEnter={e=>e.currentTarget.style.borderColor='#1a56db'} onMouseLeave={e=>e.currentTarget.style.borderColor='var(--border)'}>
+      <span style={{ display:'flex', gap:2, alignItems:'center', marginRight:2 }}>
+        {FS_STEPS.map((_,i) => <span key={i} style={{ width:4, height:4, borderRadius:'50%', background:i<=fsIdx?'#1a56db':'var(--border)', transition:'background 0.2s' }} />)}
+      </span>
+      <span style={{ fontSize:12+fsIdx*1.5 }}>{step.label}</span>
+    </button>
+  );
+}
 
-        <div class="form-row">
-          <div class="field">
-            <label>Name <span class="req">*</span></label>
-            <input type="text" name="ai_name" placeholder="Your full name" required
-              value="<?php echo e($old['n']); ?>">
+function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const t = T[lang].nav;
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY>30);
+    window.addEventListener('scroll', fn);
+    return () => window.removeEventListener('scroll', fn);
+  }, []);
+  const NAV_LINKS = [
+    { label:t.home,        href:HOME },
+    { label:t.services,    href:ABOUT+'#services' },
+    { label:t.smartSchool, href:ABOUT+'#smart-school' },
+    { label:t.caseStudies, href:ABOUT+'#case-studies' },
+    { label:t.govt,        href:GOVT },
+    { label:t.about,       href:ABOUT },
+    { label:t.contact,     href:CONTACT, active:true },
+  ];
+  return (
+    <nav className="ai-nav" style={{ position:'sticky', top:0, left:0, right:0, zIndex:100, background:'var(--surface)', borderBottom:'1px solid var(--border)', boxShadow:scrolled?'var(--shadow)':'none', backdropFilter:'blur(12px)', transition:'box-shadow 0.3s', padding:'0 clamp(16px,5vw,80px)' }}>
+      <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', alignItems:'center', justifyContent:'space-between', height:68 }}>
+        <a href={HOME} style={{ textDecoration:'none', display:'flex', alignItems:'center' }}>
+          <img src={LOGO_URL} alt="Access Infra" style={{ height:42, width:'auto', display:'block' }} />
+        </a>
+        <div className="desktop-nav" style={{ display:'flex', alignItems:'center', gap:2 }}>
+          {NAV_LINKS.map(l => (
+            <a key={l.label} href={l.href} style={{ color:l.active?'#1a56db':'var(--text2)', textDecoration:'none', fontSize:13, fontWeight:l.active?700:500, padding:'6px 10px', borderRadius:6, transition:'all 0.15s', background:l.active?'rgba(26,86,219,0.08)':'transparent' }}
+              onMouseEnter={e=>{ e.target.style.color='#1a56db'; e.target.style.background='var(--bg2)'; }}
+              onMouseLeave={e=>{ e.target.style.color=l.active?'#1a56db':'var(--text2)'; e.target.style.background=l.active?'rgba(26,86,219,0.08)':'transparent'; }}>{l.label}</a>
+          ))}
+        </div>
+        <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+          <div className="desktop-controls" style={{ display:'flex', alignItems:'center', gap:8 }}>
+            <LangMenu lang={lang} setLang={setLang} />
+            <FontSizeBtn fsIdx={fsIdx} cycleFontSize={cycleFontSize} />
           </div>
-          <div class="field">
-            <label>Email <span class="req">*</span></label>
-            <input type="email" name="ai_email" placeholder="you@example.com" required
-              value="<?php echo e($old['e']); ?>">
+          <button onClick={toggleDark} style={{ background:'none', border:'1.5px solid var(--border)', borderRadius:999, padding:'6px 10px', cursor:'pointer', color:'var(--text2)', fontSize:13, display:'flex', alignItems:'center', gap:5, transition:'all 0.2s' }}>
+            <span style={{ fontSize:15 }}>{dark?'☀️':'🌙'}</span>
+          </button>
+          <button onClick={()=>setOpen(!open)} className="hamburger" style={{ background:'none', border:'none', cursor:'pointer', padding:6, color:'var(--text)', display:'none' }}>
+            <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
+              {open?<><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></>:<><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="3" y1="17" x2="19" y2="17"/></>}
+            </svg>
+          </button>
+        </div>
+      </div>
+      {open && (
+        <div style={{ background:'var(--surface)', borderTop:'1px solid var(--border)', padding:'12px 20px 20px' }}>
+          {NAV_LINKS.map(l => (
+            <a key={l.label} href={l.href} onClick={()=>setOpen(false)} style={{ display:'block', padding:'10px 0', color:'var(--text2)', textDecoration:'none', fontSize:15, fontWeight:500, borderBottom:'1px solid var(--border)' }}>{l.label}</a>
+          ))}
+          <div style={{ marginTop:16, paddingTop:14, borderTop:'1px solid var(--border)', display:'flex', alignItems:'center', justifyContent:'space-between', flexWrap:'wrap', gap:10 }}>
+            <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+              <span style={{ fontSize:12, color:'var(--text3)', fontWeight:500 }}>Language:</span>
+              <div style={{ display:'flex', gap:4 }}>
+                {LANGS.map(l => (
+                  <button key={l.code} onClick={()=>setLang(l.code)} style={{ padding:'5px 10px', borderRadius:6, border:'1.5px solid', borderColor:lang===l.code?'#1a56db':'var(--border)', background:lang===l.code?'rgba(26,86,219,0.1)':'var(--bg2)', color:lang===l.code?'#1a56db':'var(--text2)', fontSize:12.5, fontWeight:600, cursor:'pointer' }}>{l.label}</button>
+                ))}
+              </div>
+            </div>
+            <FontSizeBtn fsIdx={fsIdx} cycleFontSize={cycleFontSize} />
           </div>
         </div>
-
-        <div class="form-row">
-          <div class="field">
-            <label>Phone / WhatsApp</label>
-            <input type="tel" name="ai_phone" placeholder="+91 98765 43210"
-              value="<?php echo e($old['p']); ?>">
-          </div>
-          <div class="field">
-            <label>Organisation</label>
-            <input type="text" name="ai_org" placeholder="Company or department name"
-              value="<?php echo e($old['o']); ?>">
-          </div>
-        </div>
-
-        <div class="field">
-          <label>Service Interest</label>
-          <select name="ai_service">
-            <option value="">— Select a service —</option>
-            <option value="Vendor Scouting &amp; Empanelment">Vendor Scouting &amp; Empanelment</option>
-            <option value="Compliance &amp; Licensing Support">Compliance &amp; Licensing Support</option>
-            <option value="Bid &amp; Tender Support">Bid &amp; Tender Support</option>
-            <option value="Stakeholder Engagement">Stakeholder Engagement</option>
-            <option value="Project Monitoring &amp; Reporting">Project Monitoring &amp; Reporting</option>
-            <option value="General Enquiry">General Enquiry</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>Message <span class="req">*</span></label>
-          <textarea name="ai_message" placeholder="Tell us about your project or requirement…" required></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">Send Message ➜</button>
-        <p class="form-disclaimer">We respond within one business day. Your information is never shared.</p>
-      </form>
-    </div>
-
-  </div><!-- .contact-grid -->
-
-  <footer class="ai-footer">
-    <div class="ai-footer-brand"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra"></div>
-    <nav class="ai-footer-links">
-      <a href="<?php echo e(url('index.php')); ?>">Home</a>
-      <a href="<?php echo e(url('about.php#services')); ?>">Services</a>
-      <a href="<?php echo e(url('about.php#smart-school')); ?>">Smart School</a>
-      <a href="<?php echo e(url('about.php#case-studies')); ?>">Case Studies</a>
-      <a href="<?php echo e(url('government-departments.php')); ?>">Government Departments</a>
-      <a href="<?php echo e(url('about.php')); ?>">About Us</a>
-      <a href="<?php echo e(url('contact.php')); ?>">Contact</a>
+      )}
     </nav>
-    <p class="ai-footer-copy">&copy; <?php echo date('Y'); ?> Access Infra. All rights reserved. Karnataka &amp; Telangana.</p>
-  </footer>
+  );
+}
 
-</div><!-- .contact-page -->
-
-<script>
-(function() {
-  var toggle = document.getElementById('navToggle');
-  var links  = document.getElementById('navLinks');
-  if (toggle && links) {
-    toggle.addEventListener('click', function() {
-      links.classList.toggle('open');
-    });
+function StatusBanner() {
+  if (AI_STATUS === 'sent') {
+    return (
+      <div style={{ maxWidth:1280, margin:'24px auto 0', padding:'0 clamp(16px,5vw,80px)' }}>
+        <div style={{ display:'flex', alignItems:'center', gap:12, background:'rgba(16,185,129,0.12)', border:'1px solid rgba(16,185,129,0.3)', color:'#059669', borderRadius:12, padding:'16px 20px', fontSize:14.5 }}>
+          <span style={{ fontSize:20 }}>✅</span>
+          <div><strong>Message sent!</strong> Thank you for reaching out. We'll be in touch within one business day. Check your inbox for a confirmation copy.</div>
+        </div>
+      </div>
+    );
   }
-
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var reveals = document.querySelectorAll('.reveal');
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    reveals.forEach(function(el) { el.classList.add('in-view'); });
-    return;
+  if (AI_STATUS === 'error') {
+    return (
+      <div style={{ maxWidth:1280, margin:'24px auto 0', padding:'0 clamp(16px,5vw,80px)' }}>
+        <div style={{ display:'flex', alignItems:'center', gap:12, background:'rgba(239,68,68,0.12)', border:'1px solid rgba(239,68,68,0.3)', color:'#dc2626', borderRadius:12, padding:'16px 20px', fontSize:14.5 }}>
+          <span style={{ fontSize:20 }}>⚠️</span>
+          <div><strong>Please fill in all required fields</strong> and try again. If the problem persists, email us directly.</div>
+        </div>
+      </div>
+    );
   }
-  var observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-  reveals.forEach(function(el) { observer.observe(el); });
-})();
+  if (AI_STATUS === 'mailfail') {
+    return (
+      <div style={{ maxWidth:1280, margin:'24px auto 0', padding:'0 clamp(16px,5vw,80px)' }}>
+        <div style={{ display:'flex', alignItems:'center', gap:12, background:'rgba(239,68,68,0.12)', border:'1px solid rgba(239,68,68,0.3)', color:'#dc2626', borderRadius:12, padding:'16px 20px', fontSize:14.5 }}>
+          <span style={{ fontSize:20 }}>❌</span>
+          <div><strong>Server error — message not delivered.</strong> Please email us directly at <a href={'mailto:'+ADMIN_EMAIL} style={{ color:'inherit', textDecoration:'underline' }}>{ADMIN_EMAIL}</a>.</div>
+        </div>
+      </div>
+    );
+  }
+  return null;
+}
+
+function ContactPage({ lang }) {
+  const t = T[lang].contact;
+  return (
+    <section style={{ padding:'clamp(60px,8vw,100px) clamp(16px,5vw,80px) clamp(60px,8vw,100px)', background:'var(--bg)' }}>
+      <div style={{ maxWidth:1280, margin:'0 auto' }}>
+        <div style={{ marginBottom:48 }}>
+          <Tag>{t.tag}</Tag>
+          <h1 style={{ fontSize:'clamp(30px,4.5vw,52px)', fontWeight:800, marginTop:16, letterSpacing:'-1px', lineHeight:1.1 }}>
+            {t.heading.split('\n').map((line,i) => <span key={i}>{line}{i===0&&<br />}</span>)}
+          </h1>
+          <p style={{ color:'var(--text2)', fontSize:16, maxWidth:640, marginTop:18, lineHeight:1.8 }}>{t.desc}</p>
+        </div>
+
+        <div className="contact-grid-cols" style={{ display:'grid', gridTemplateColumns:'1fr 1.6fr', gap:40 }}>
+          <div>
+            <div style={{ display:'flex', alignItems:'center', gap:14, marginBottom:24 }}>
+              <div style={{ width:46, height:46, borderRadius:12, background:'rgba(26,86,219,0.12)', border:'1px solid rgba(26,86,219,0.25)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:19, flexShrink:0 }}>📧</div>
+              <div>
+                <div style={{ fontSize:12, color:'var(--text3)', fontWeight:500 }}>{t.emailLabel}</div>
+                <a href={'mailto:'+ADMIN_EMAIL} style={{ color:'var(--text)', fontSize:15, fontWeight:600, textDecoration:'none' }}>{ADMIN_EMAIL}</a>
+              </div>
+            </div>
+            <div style={{ display:'flex', alignItems:'center', gap:14, marginBottom:24 }}>
+              <div style={{ width:46, height:46, borderRadius:12, background:'rgba(26,86,219,0.12)', border:'1px solid rgba(26,86,219,0.25)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:19, flexShrink:0 }}>🌐</div>
+              <div>
+                <div style={{ fontSize:12, color:'var(--text3)', fontWeight:500 }}>{t.websiteLabel}</div>
+                <a href={HOME} style={{ color:'var(--text)', fontSize:15, fontWeight:600, textDecoration:'none' }}>{SITE_URL.replace(/^https?:\/\//,'')}</a>
+              </div>
+            </div>
+            <div style={{ display:'flex', alignItems:'center', gap:14, marginBottom:24 }}>
+              <div style={{ width:46, height:46, borderRadius:12, background:'rgba(26,86,219,0.12)', border:'1px solid rgba(26,86,219,0.25)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:19, flexShrink:0 }}>📍</div>
+              <div>
+                <div style={{ fontSize:12, color:'var(--text3)', fontWeight:500 }}>{t.presenceLabel}</div>
+                <span style={{ color:'var(--text)', fontSize:15, fontWeight:600 }}>{t.presenceVal}</span>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ background:'var(--surface2)', border:'1px solid var(--border)', borderRadius:18, padding:'clamp(24px,3vw,36px)', boxShadow:'var(--shadow)' }}>
+            <h3 style={{ fontSize:18, fontWeight:700, marginBottom:22 }}>{t.formHeading}</h3>
+            <form method="POST" action={AI_FORM_ACTION}>
+              <input type="hidden" name="ai_contact_token" value={AI_CSRF} />
+              <input type="hidden" name="ai_contact_submit" value="1" />
+
+              <div className="contact-form-row" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16, marginBottom:16 }}>
+                <div>
+                  <label style={{ display:'block', fontSize:12.5, fontWeight:600, color:'var(--text3)', marginBottom:6 }}>{t.fields[0].label} <span style={{ color:'#1e3a8a' }}>*</span></label>
+                  <input type="text" name="ai_name" placeholder={t.fields[0].placeholder} required defaultValue={AI_OLD.n}
+                    style={{ width:'100%', background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8, padding:'10px 14px', color:'var(--text)', fontFamily:'inherit', fontSize:14, outline:'none' }} />
+                </div>
+                <div>
+                  <label style={{ display:'block', fontSize:12.5, fontWeight:600, color:'var(--text3)', marginBottom:6 }}>{t.fields[1].label} <span style={{ color:'#1e3a8a' }}>*</span></label>
+                  <input type="email" name="ai_email" placeholder={t.fields[1].placeholder} required defaultValue={AI_OLD.e}
+                    style={{ width:'100%', background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8, padding:'10px 14px', color:'var(--text)', fontFamily:'inherit', fontSize:14, outline:'none' }} />
+                </div>
+              </div>
+
+              <div className="contact-form-row" style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:16, marginBottom:16 }}>
+                <div>
+                  <label style={{ display:'block', fontSize:12.5, fontWeight:600, color:'var(--text3)', marginBottom:6 }}>Phone / WhatsApp</label>
+                  <input type="tel" name="ai_phone" placeholder="+91 98765 43210" defaultValue={AI_OLD.p}
+                    style={{ width:'100%', background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8, padding:'10px 14px', color:'var(--text)', fontFamily:'inherit', fontSize:14, outline:'none' }} />
+                </div>
+                <div>
+                  <label style={{ display:'block', fontSize:12.5, fontWeight:600, color:'var(--text3)', marginBottom:6 }}>{t.fields[2].label}</label>
+                  <input type="text" name="ai_org" placeholder={t.fields[2].placeholder} defaultValue={AI_OLD.o}
+                    style={{ width:'100%', background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8, padding:'10px 14px', color:'var(--text)', fontFamily:'inherit', fontSize:14, outline:'none' }} />
+                </div>
+              </div>
+
+              <div style={{ marginBottom:16 }}>
+                <label style={{ display:'block', fontSize:12.5, fontWeight:600, color:'var(--text3)', marginBottom:6 }}>Service Interest</label>
+                <select name="ai_service" style={{ width:'100%', background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8, padding:'10px 14px', color:'var(--text)', fontFamily:'inherit', fontSize:14, outline:'none', cursor:'pointer' }}>
+                  <option value="">— Select a service —</option>
+                  <option value="Vendor Scouting &amp; Empanelment">Vendor Scouting &amp; Empanelment</option>
+                  <option value="Compliance &amp; Licensing Support">Compliance &amp; Licensing Support</option>
+                  <option value="Bid &amp; Tender Support">Bid &amp; Tender Support</option>
+                  <option value="Stakeholder Engagement">Stakeholder Engagement</option>
+                  <option value="Project Monitoring &amp; Reporting">Project Monitoring &amp; Reporting</option>
+                  <option value="General Enquiry">General Enquiry</option>
+                </select>
+              </div>
+
+              <div style={{ marginBottom:22 }}>
+                <label style={{ display:'block', fontSize:12.5, fontWeight:600, color:'var(--text3)', marginBottom:6 }}>{t.messageLabel} <span style={{ color:'#1e3a8a' }}>*</span></label>
+                <textarea name="ai_message" placeholder={t.messagePlaceholder} required
+                  style={{ width:'100%', minHeight:130, resize:'vertical', background:'var(--bg2)', border:'1px solid var(--border)', borderRadius:8, padding:'10px 14px', color:'var(--text)', fontFamily:'inherit', fontSize:14, outline:'none' }}></textarea>
+              </div>
+
+              <button type="submit" style={{ width:'100%', padding:'13px', background:'linear-gradient(135deg,#1a56db,#1e3a8a)', border:'none', borderRadius:10, color:'#fff', fontFamily:'inherit', fontSize:15, fontWeight:700, cursor:'pointer' }}>{t.submit}</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer({ lang }) {
+  const nav = T[lang].nav;
+  const t = T[lang].footer;
+  return (
+    <footer style={{ background:'var(--bg2)', borderTop:'1px solid var(--border)', padding:'clamp(20px,3vw,40px) clamp(16px,5vw,80px)' }}>
+      <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:16 }}>
+        <div style={{ display:'flex', alignItems:'center' }}>
+          <img src={LOGO_URL} alt="Access Infra" style={{ height:32, width:'auto', display:'block' }} />
+        </div>
+        <div style={{ display:'flex', gap:20, flexWrap:'wrap' }}>
+          {[[nav.home,HOME],[nav.services,ABOUT+'#services'],[nav.smartSchool,ABOUT+'#smart-school'],[nav.caseStudies,ABOUT+'#case-studies'],[nav.govt,GOVT],[nav.about,ABOUT],[nav.contact,CONTACT],['Privacy Policy',PRIVACY],['Cookie Policy',COOKIEPOLICY]].map(([l,h]) => (
+            <a key={h} href={h} style={{ color:'var(--text3)', textDecoration:'none', fontSize:12.5, transition:'color 0.2s' }}
+              onMouseEnter={e=>e.target.style.color='#1a56db'} onMouseLeave={e=>e.target.style.color='var(--text3)'}>{l}</a>
+          ))}
+        </div>
+        <p style={{ color:'var(--text3)', fontSize:12 }}>{t.copy}</p>
+      </div>
+    </footer>
+  );
+}
+
+function App() {
+  const [dark, setDark] = useState(() => { const s=localStorage.getItem('ai-theme'); return s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches; });
+  const [lang, setLang] = useState(() => localStorage.getItem('ai-lang')||'en');
+  const [fsIdx, setFsIdx] = useState(() => Number(localStorage.getItem('ai-fs')||0));
+  const cycleFontSize = () => setFsIdx(i => (i+1)%FS_STEPS.length);
+
+  useEffect(() => { document.documentElement.setAttribute('data-theme',dark?'dark':'light'); localStorage.setItem('ai-theme',dark?'dark':'light'); }, [dark]);
+  useEffect(() => { document.body.setAttribute('data-lang',lang); localStorage.setItem('ai-lang',lang); document.documentElement.lang=lang; }, [lang]);
+  useEffect(() => { localStorage.setItem('ai-fs',fsIdx); }, [fsIdx]);
+
+  const zoom = FS_STEPS[fsIdx].zoom;
+
+  return (
+    <>
+      <Nav dark={dark} toggleDark={()=>setDark(d=>!d)} lang={lang} setLang={setLang} fsIdx={fsIdx} cycleFontSize={cycleFontSize} />
+      <div className="content-zoom" style={{ zoom, transformOrigin:'top center' }}>
+        <StatusBanner />
+        <ContactPage lang={lang} />
+        <Footer lang={lang} />
+      </div>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 </script>
 
-</body>
-</html>
+<?php require __DIR__ . '/includes/footer.php'; ?>

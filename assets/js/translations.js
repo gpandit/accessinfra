@@ -119,7 +119,7 @@ window.TRANSLATIONS = {
       tag: 'Gallery',
       heading: 'Project Visuals',
       subtext: 'Snapshots from our Smart School deployments and infrastructure projects across India.',
-      placeholder: 'Photo gallery — replace placeholders with actual project photography',
+      placeholder: 'Project photography coming soon — these visuals are being finalised.',
       items: ['AI Interactive Panel Installation','Smart Classroom Setup','Video Conferencing Session','CCTV Surveillance Network','Teacher Training Workshop','Government Handover Ceremony'],
     },
     testimonials: {
@@ -270,7 +270,7 @@ window.TRANSLATIONS = {
       tag: 'ಗ್ಯಾಲರಿ',
       heading: 'ಯೋಜನೆ ದೃಶ್ಯಗಳು',
       subtext: 'ಭಾರತಾದ್ಯಂತ ನಮ್ಮ ಸ್ಮಾರ್ಟ್ ಶಾಲೆ ಮತ್ತು ಮೂಲಸೌಕರ್ಯ ಯೋಜನೆಗಳ ಚಿತ್ರಗಳು.',
-      placeholder: 'ಫೋಟೊ ಗ್ಯಾಲರಿ — ನೈಜ ಯೋಜನೆ ಛಾಯಾಚಿತ್ರಗಳಿಂದ ತಾಣಗಳನ್ನು ಬದಲಾಯಿಸಿ',
+      placeholder: 'ಯೋಜನೆಯ ಚಿತ್ರಗಳು ಶೀಘ್ರದಲ್ಲೇ ಬರಲಿವೆ.',
       items: ['AI ಸಂವಾದಾತ್ಮಕ ಪ್ಯಾನೆಲ್ ಅಳವಡಿಕೆ','ಸ್ಮಾರ್ಟ್ ತರಗತಿ ಸ್ಥಾಪನೆ','ವಿಡಿಯೊ ಕಾನ್ಫರೆನ್ಸಿಂಗ್ ಅಧಿವೇಶನ','CCTV ಕಣ್ಗಾವಲು ಜಾಲ','ಶಿಕ್ಷಕ ತರಬೇತಿ ಕಾರ್ಯಾಗಾರ','ಸರ್ಕಾರಿ ಹಸ್ತಾಂತರ ಸಮಾರಂಭ'],
     },
     testimonials: {
@@ -419,7 +419,7 @@ window.TRANSLATIONS = {
       tag: 'गैलरी',
       heading: 'परियोजना दृश्य',
       subtext: 'पूरे भारत में हमारी स्मार्ट स्कूल तैनाती और बुनियादी ढांचा परियोजनाओं की झलकियां।',
-      placeholder: 'फोटो गैलरी — प्लेसहोल्डर को वास्तविक परियोजना फोटोग्राफी से बदलें',
+      placeholder: 'परियोजना की तस्वीरें जल्द ही आ रही हैं।',
       items: ['AI इंटरएक्टिव पैनल इंस्टॉलेशन','स्मार्ट क्लासरूम सेटअप','वीडियो कॉन्फ्रेंसिंग सत्र','CCTV निगरानी नेटवर्क','शिक्षक प्रशिक्षण कार्यशाला','सरकारी हस्तांतरण समारोह'],
     },
     testimonials: {

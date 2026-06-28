@@ -37,6 +37,8 @@ body[data-lang="hi"] h1, body[data-lang="hi"] h2, body[data-lang="hi"] h3, body[
 @media (max-width:768px) { .two-col { grid-template-columns:1fr !important; } .stats-card { display:none !important; } }
 @media (max-width:900px) { .desktop-controls { display:none !important; } }
 .content-zoom { transition:zoom 0.2s ease; }
+@media (max-width:900px) { .services-grid { grid-template-columns:repeat(2,1fr) !important; } }
+@media (max-width:600px) { .services-grid { grid-template-columns:1fr !important; } }
 </style>
 
 <script src="<?php echo url('assets/js/translations.js'); ?>"></script>
@@ -336,7 +338,7 @@ function Services({ lang }) {
             <p style={{ color:'var(--text3)', fontSize:16, maxWidth:480, margin:'12px auto 0' }}>{t.desc}</p>
           </div>
         </Reveal>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(290px,1fr))', gap:18 }}>
+        <div className="services-grid" style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:18 }}>
           {t.items.map((s,i) => (
             <Reveal key={i} delay={(i%3)*60}>
               <div style={{ background:'var(--surface2)', border:'1px solid var(--border)', borderRadius:16, padding:26, transition:'all 0.25s', cursor:'default' }}
@@ -521,7 +523,16 @@ function Gallery({ lang }) {
       <div style={{ maxWidth:1280, margin:'0 auto' }}>
         <Reveal>
           <div style={{ marginBottom:36, display:'flex', justifyContent:'space-between', alignItems:'flex-end', flexWrap:'wrap', gap:14 }}>
-            <div><Tag>{t.tag}</Tag><h2 style={{ fontSize:'clamp(26px,3.5vw,46px)', fontWeight:800, marginTop:14, letterSpacing:'-0.8px' }}>{t.heading}</h2></div>
+            <div>
+              <div style={{ display:'flex', alignItems:'center', gap:10, flexWrap:'wrap' }}>
+                <Tag>{t.tag}</Tag>
+                <span style={{ display:'inline-flex', alignItems:'center', gap:6, background:'rgba(245,158,11,0.12)', border:'1px solid rgba(245,158,11,0.35)', color:'#b45309', fontSize:11.5, fontWeight:700, letterSpacing:'0.05em', textTransform:'uppercase', padding:'4px 10px', borderRadius:999 }}>
+                  <span style={{ width:6, height:6, borderRadius:'50%', background:'#f59e0b', display:'inline-block' }}></span>
+                  Coming Soon
+                </span>
+              </div>
+              <h2 style={{ fontSize:'clamp(26px,3.5vw,46px)', fontWeight:800, marginTop:14, letterSpacing:'-0.8px' }}>{t.heading}</h2>
+            </div>
             <p style={{ color:'var(--text3)', fontSize:13.5, maxWidth:300, textAlign:'right' }}>{t.subtext}</p>
           </div>
         </Reveal>
