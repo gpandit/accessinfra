@@ -5,7 +5,7 @@
   .blog-wrap h1{font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:800;margin-bottom:8px;}
   .blog-list{display:grid;gap:20px;margin-top:32px;}
   .blog-card{display:grid;grid-template-columns:200px 1fr;gap:20px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;padding:0;}
-  .blog-card .cover{background:linear-gradient(135deg,#FFC100,#F5D000);min-height:140px;}
+  .blog-card .cover{background:linear-gradient(135deg,#1a56db,#1e3a8a);min-height:140px;}
   .blog-card .cover img{width:100%;height:100%;object-fit:cover;display:block;}
   .blog-card .body{padding:20px 22px;}
   .blog-card h2{font-size:18px;font-weight:700;margin-bottom:8px;}

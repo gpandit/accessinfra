@@ -17,8 +17,8 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --navy: #315C2B; --navy-mid: #636940;
-    --accent: #FFC100; --teal: #F5D000;
+    --navy: #0c1f3f; --navy-mid: #1d4ed8;
+    --accent: #1a56db; --teal: #1e3a8a;
     --bg: #ffffff; --bg2: #f8fafc; --text: #0f172a; --text2: #334155; --text3: #64748b;
     --border: #e2e8f0;
   }

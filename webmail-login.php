@@ -12,10 +12,10 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --navy: #315C2B;
-    --navy-mid: #636940;
-    --accent: #FFC100;
-    --gold: #F5D000;
+    --navy: #0c1f3f;
+    --navy-mid: #1d4ed8;
+    --accent: #1a56db;
+    --gold: #1e3a8a;
     --text: #0f172a;
     --text-muted: #64748b;
     --border: #e2e8f0;
@@ -31,7 +31,7 @@
     width: 100%; max-width: 400px;
     background: #fff;
     border-radius: 16px;
-    box-shadow: 0 20px 60px rgba(4,30,4,0.35);
+    box-shadow: 0 20px 60px rgba(4,10,30,0.35);
     padding: 36px 32px 32px;
   }
   .logo-space {
@@ -84,7 +84,7 @@
     cursor: pointer;
     transition: transform 0.15s, box-shadow 0.15s;
   }
-  button[type="submit"]:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(255,193,0,0.35); }
+  button[type="submit"]:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(26,86,219,0.35); }
   .forgot-row { text-align: center; margin-top: 18px; }
   .forgot-link {
     font-size: 13px; color: var(--navy-mid);
@@ -97,8 +97,8 @@
   .forgot-message {
     display: none;
     margin-top: 14px;
-    background: rgba(99,105,64,0.1);
-    border: 1px solid rgba(99,105,64,0.25);
+    background: rgba(29,78,216,0.1);
+    border: 1px solid rgba(29,78,216,0.25);
     color: #3a3f26;
     font-size: 13px;
     line-height: 1.6;
