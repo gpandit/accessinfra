@@ -113,11 +113,11 @@ function ContextImage({ label, gradient }) {
 function IndiaLogoBadge() {
   return (
     <div role="img" aria-label="Access Infra Consulting logo over a map of India"
-      style={{ position:'relative', width:'100%', aspectRatio:'4/3', borderRadius:16, background:'linear-gradient(135deg,#1a56db14,#1e3a8a14)', boxShadow:'var(--shadow)', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden' }}>
-      <img src={INDIA_MAP_URL} alt="" aria-hidden="true" style={{ position:'absolute', width:'70%', height:'70%', objectFit:'contain' }} />
-      <div style={{ position:'relative', display:'flex', flexDirection:'column', alignItems:'center', gap:8, background:'rgba(255,255,255,0.62)', backdropFilter:'blur(3px)', padding:'18px 26px', borderRadius:14, boxShadow:'var(--shadow-lg)' }}>
-        <img src={LOGO_URL} alt="Access Infra" style={{ width:'clamp(140px,16vw,200px)', height:'auto', display:'block', opacity:0.88 }} />
-        <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:13, letterSpacing:'0.28em', textTransform:'uppercase', color:'#334155' }}>Consulting</span>
+      style={{ position:'relative', width:'100%', aspectRatio:'4/3', borderRadius:16, boxShadow:'var(--shadow)', overflow:'hidden' }}>
+      <img src={INDIA_MAP_URL} alt="" aria-hidden="true" style={{ position:'absolute', inset:0, width:'100%', height:'100%', objectFit:'cover' }} />
+      <div style={{ position:'absolute', top:16, right:16, display:'flex', flexDirection:'column', alignItems:'center', gap:6, background:'rgba(255,255,255,0.62)', backdropFilter:'blur(3px)', padding:'14px 20px', borderRadius:14, boxShadow:'var(--shadow-lg)' }}>
+        <img src={LOGO_URL} alt="Access Infra" style={{ width:'clamp(110px,12vw,160px)', height:'auto', display:'block', opacity:0.88 }} />
+        <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:11, letterSpacing:'0.24em', textTransform:'uppercase', color:'#334155' }}>Consulting</span>
       </div>
     </div>
   );
