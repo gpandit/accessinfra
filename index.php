@@ -38,8 +38,14 @@ body[data-lang="te"] h1, body[data-lang="te"] h2, body[data-lang="te"] h3, body[
 .marquee-track { animation:marquee 28s linear infinite; }
 .marquee-track:hover { animation-play-state:paused; }
 .content-zoom { transition:zoom 0.2s ease; }
-@media (max-width:900px) { .desktop-controls { display:none !important; } }
-@media (max-width:768px) { .two-col { grid-template-columns:1fr !important; } }
+@media (max-width:900px) { .desktop-controls { display:none !important; } .desktop-nav { display:none !important; } .hamburger { display:flex !important; } }
+@media (max-width:768px) {
+  .two-col { grid-template-columns:1fr !important; }
+  .activity-card { grid-template-columns:1fr !important; }
+  .activity-num { padding:14px 0 !important; }
+  .activity-body { grid-template-columns:1fr !important; padding:22px !important; }
+  .activity-body > div:last-child { min-width:0 !important; margin-top:4px; }
+}
 </style>
 
 <script type="text/babel">
@@ -65,7 +71,8 @@ const FS_STEPS = [
 
 const T = {
   en: {
-    nav:{ home:'Home', about:'About Us', vendor:'Vendor Consulting', govt:'Government Departments', contact:'Contact' },
+    nav:{ home:'Home', about:'About Us', services:'Services', smartSchool:'Smart School', caseStudies:'Case Studies', vendor:'Vendor Consulting', govt:'Government Departments', contact:'Contact' },
+    heroLabels:['Bridges','Schools','Hospitals','Highways','Power Grids'],
     heroTag:'Vendor Consulting',
     heroH1a:'We Help Vendors Navigate',
     heroH1b:'Government Markets',
@@ -90,7 +97,8 @@ const T = {
     ],
   },
   kn: {
-    nav:{ home:'ಮುಖಪುಟ', about:'ನಮ್ಮ ಬಗ್ಗೆ', vendor:'ವೆಂಡರ್ ಸಲಹೆ', govt:'ಸರ್ಕಾರಿ ಇಲಾಖೆಗಳು', contact:'ಸಂಪರ್ಕ' },
+    nav:{ home:'ಮುಖಪುಟ', about:'ನಮ್ಮ ಬಗ್ಗೆ', services:'ಸೇವೆಗಳು', smartSchool:'ಸ್ಮಾರ್ಟ್ ಶಾಲೆ', caseStudies:'ಪ್ರಕರಣ ಅಧ್ಯಯನಗಳು', vendor:'ವೆಂಡರ್ ಸಲಹೆ', govt:'ಸರ್ಕಾರಿ ಇಲಾಖೆಗಳು', contact:'ಸಂಪರ್ಕ' },
+    heroLabels:['ಸೇತುವೆಗಳು','ಶಾಲೆಗಳು','ಆಸ್ಪತ್ರೆಗಳು','ಹೆದ್ದಾರಿಗಳು','ವಿದ್ಯುತ್ ಗ್ರಿಡ್‌ಗಳು'],
     heroTag:'ವೆಂಡರ್ ಸಲಹೆ',
     heroH1a:'ಸರ್ಕಾರಿ ಮಾರುಕಟ್ಟೆಯಲ್ಲಿ',
     heroH1b:'ನ್ಯಾವಿಗೇಟ್ ಮಾಡಲು ನೆರವು',
@@ -115,7 +123,8 @@ const T = {
     ],
   },
   hi: {
-    nav:{ home:'होम', about:'हमारे बारे में', vendor:'वेंडर परामर्श', govt:'सरकारी विभाग', contact:'संपर्क' },
+    nav:{ home:'होम', about:'हमारे बारे में', services:'सेवाएं', smartSchool:'स्मार्ट स्कूल', caseStudies:'केस स्टडीज़', vendor:'वेंडर परामर्श', govt:'सरकारी विभाग', contact:'संपर्क' },
+    heroLabels:['पुल','स्कूल','अस्पताल','हाईवे','पावर ग्रिड'],
     heroTag:'वेंडर परामर्श',
     heroH1a:'वेंडर्स को सरकारी',
     heroH1b:'बाज़ारों में मार्गदर्शन',
@@ -140,7 +149,8 @@ const T = {
     ],
   },
   te: {
-    nav:{ home:'హోమ్', about:'మా గురించి', vendor:'వెండర్ కన్సల్టింగ్', govt:'ప్రభుత్వ శాఖలు', contact:'సంప్రదించండి' },
+    nav:{ home:'హోమ్', about:'మా గురించి', services:'సేవలు', smartSchool:'స్మార్ట్ స్కూల్', caseStudies:'కేస్ స్టడీస్', vendor:'వెండర్ కన్సల్టింగ్', govt:'ప్రభుత్వ శాఖలు', contact:'సంప్రదించండి' },
+    heroLabels:['వంతెనలు','పాఠశాలలు','ఆసుపత్రులు','హైవేలు','విద్యుత్ గ్రిడ్‌లు'],
     heroTag:'వెండర్ కన్సల్టింగ్',
     heroH1a:'వెండర్లు ప్రభుత్వ',
     heroH1b:'మార్కెట్‌లలో నావిగేట్ చేయడానికి',
@@ -207,18 +217,147 @@ function Reveal({ children, delay=0, style={} }) {
   );
 }
 
-function HeroImage() {
+const seg = (x1,y1,x2,y2) => [x1,y1,x2,y2];
+const rectSeg = (x1,y1,x2,y2) => [seg(x1,y1,x2,y1),seg(x2,y1,x2,y2),seg(x2,y2,x1,y2),seg(x1,y2,x1,y1)];
+const crossSeg = (cx,cy,r) => [seg(cx-r,cy,cx+r,cy),seg(cx,cy-r,cx,cy+r)];
+
+function sampleSegments(segments, count) {
+  const lens = segments.map(([x1,y1,x2,y2]) => Math.hypot(x2-x1,y2-y1) || 0.0001);
+  const total = lens.reduce((a,b) => a+b, 0);
+  const pts = [];
+  for (let i=0; i<count; i++) {
+    let d = (i/(count-1)) * total;
+    let idx = 0;
+    while (idx < lens.length-1 && d > lens[idx]) { d -= lens[idx]; idx++; }
+    const [x1,y1,x2,y2] = segments[idx];
+    const t = d / lens[idx];
+    pts.push([x1+(x2-x1)*t, y1+(y2-y1)*t]);
+  }
+  return pts;
+}
+
+const INFRA_SHAPES = [
+  // Bridge
+  [
+    seg(20,95,180,95),
+    seg(60,40,60,95), seg(140,40,140,95),
+    seg(60,40,40,95), seg(60,40,80,95),
+    seg(140,40,120,95), seg(140,40,160,95),
+    seg(30,115,50,115), seg(70,115,90,115), seg(110,115,130,115), seg(150,115,170,115),
+  ],
+  // School
+  [
+    seg(40,55,100,20), seg(100,20,160,55),
+    ...rectSeg(45,55,155,115),
+    seg(90,90,90,115), seg(110,90,110,115), seg(90,90,110,90),
+    ...crossSeg(65,75,8), ...crossSeg(135,75,8),
+  ],
+  // Hospital
+  [
+    ...rectSeg(40,30,160,115),
+    ...crossSeg(100,68,18),
+    ...crossSeg(60,45,6), ...crossSeg(140,45,6),
+    seg(70,115,70,95), seg(130,115,130,95),
+  ],
+  // Highway
+  [
+    seg(60,115,100,30), seg(140,115,100,30),
+    seg(95,110,98,96), seg(97,90,99,78), seg(98.5,75,100,65), seg(99.5,60,100,50),
+    seg(170,40,170,80), ...rectSeg(158,28,182,42),
+  ],
+  // Power grid
+  [
+    seg(100,30,100,115),
+    seg(70,45,130,45), seg(75,65,125,65),
+    seg(85,45,100,75), seg(115,45,100,75), seg(88,65,100,90), seg(112,65,100,90),
+    seg(100,115,75,140), seg(100,115,125,140),
+  ],
+];
+
+function InfraAnimation({ labels }) {
+  const canvasRef = useRef(null);
+  const wrapRef = useRef(null);
+  const [shapeIdx, setShapeIdx] = useState(0);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const wrap = wrapRef.current;
+    const ctx = canvas.getContext('2d');
+    const COUNT = 64;
+    const BOX = { w:200, h:150 };
+    const shapesPx = INFRA_SHAPES.map(s => sampleSegments(s, COUNT));
+    const particles = shapesPx[0].map(([x,y]) => ({ x, y, tx:x, ty:y }));
+    let idx = 0;
+    let raf, advance;
+
+    function resize() {
+      const rect = wrap.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      canvas.style.width = rect.width+'px';
+      canvas.style.height = rect.height+'px';
+      ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function draw() {
+      const rect = wrap.getBoundingClientRect();
+      ctx.clearRect(0,0,rect.width,rect.height);
+      particles.forEach(p => { p.x += (p.tx-p.x)*0.07; p.y += (p.ty-p.y)*0.07; });
+      const pts = particles.map(p => [ (p.x/BOX.w)*rect.width, (p.y/BOX.h)*rect.height ]);
+      const threshold = rect.width*0.09;
+      ctx.lineWidth = 1;
+      for (let i=0; i<pts.length; i++) {
+        for (let j=i+1; j<pts.length; j++) {
+          const dx = pts[i][0]-pts[j][0], dy = pts[i][1]-pts[j][1];
+          const d = Math.hypot(dx,dy);
+          if (d < threshold) {
+            ctx.globalAlpha = 1 - d/threshold;
+            ctx.strokeStyle = 'rgba(255,255,255,0.35)';
+            ctx.beginPath(); ctx.moveTo(pts[i][0],pts[i][1]); ctx.lineTo(pts[j][0],pts[j][1]); ctx.stroke();
+          }
+        }
+      }
+      ctx.globalAlpha = 1;
+      pts.forEach((p,i) => {
+        ctx.beginPath();
+        ctx.arc(p[0], p[1], 2.4, 0, Math.PI*2);
+        ctx.fillStyle = i%2===0 ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.7)';
+        ctx.fill();
+      });
+      raf = requestAnimationFrame(draw);
+    }
+
+    if (REDUCE_MOTION) {
+      draw();
+      cancelAnimationFrame(raf);
+      return () => window.removeEventListener('resize', resize);
+    }
+
+    advance = setInterval(() => {
+      idx = (idx+1) % shapesPx.length;
+      setShapeIdx(idx);
+      const targets = shapesPx[idx];
+      particles.forEach((p,i) => { p.tx = targets[i][0]; p.ty = targets[i][1]; });
+    }, 2600);
+    draw();
+
+    return () => {
+      cancelAnimationFrame(raf);
+      clearInterval(advance);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
   return (
-    <div role="img" aria-label="Illustration of government and vendor partners collaborating on infrastructure projects across Karnataka and Telangana"
-      style={{ position:'relative', width:'100%', aspectRatio:'4/3', borderRadius:20, overflow:'hidden', background:'linear-gradient(135deg,#1a56db 0%,#0d9488 100%)', boxShadow:'var(--shadow-lg)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-      <svg width="46%" height="46%" viewBox="0 0 64 64" fill="none" style={{ opacity:0.9 }}>
-        <rect x="6" y="30" width="10" height="26" rx="2" fill="rgba(255,255,255,0.9)" />
-        <rect x="20" y="20" width="10" height="36" rx="2" fill="rgba(255,255,255,0.75)" />
-        <rect x="34" y="10" width="10" height="46" rx="2" fill="rgba(255,255,255,0.9)" />
-        <rect x="48" y="24" width="10" height="32" rx="2" fill="rgba(255,255,255,0.75)" />
-        <circle cx="32" cy="4" r="3" fill="#fff" />
-      </svg>
-      {/* placeholder for a real photograph — e.g. govt officials and vendor partners at a project site */}
+    <div ref={wrapRef} role="img" aria-label={`Animated illustration cycling through infrastructure development: ${labels.join(', ')}`}
+      style={{ position:'relative', width:'100%', aspectRatio:'4/3', borderRadius:20, overflow:'hidden', background:'linear-gradient(135deg,#1a56db 0%,#0d9488 100%)', boxShadow:'var(--shadow-lg)' }}>
+      <canvas ref={canvasRef} style={{ position:'absolute', inset:0 }} />
+      <div style={{ position:'absolute', left:18, bottom:18, background:'rgba(255,255,255,0.18)', backdropFilter:'blur(6px)', color:'#fff', fontSize:13, fontWeight:700, padding:'7px 14px', borderRadius:999, letterSpacing:'0.03em' }}>
+        {labels[shapeIdx]}
+      </div>
     </div>
   );
 }
@@ -278,10 +417,13 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
   const nfs = 13 + fsIdx*1.5;
   const t = T[lang];
   const links = [
-    { label:t.nav.home,   href:HOME,    active:true },
-    { label:t.nav.about,  href:ABOUT },
-    { label:t.nav.govt,   href:GOVT },
-    { label:t.nav.contact,href:CONTACT },
+    { label:t.nav.home,        href:HOME,    active:true },
+    { label:t.nav.about,       href:ABOUT },
+    { label:t.nav.services,    href:ABOUT+'#services' },
+    { label:t.nav.smartSchool, href:ABOUT+'#smart-school' },
+    { label:t.nav.caseStudies, href:ABOUT+'#case-studies' },
+    { label:t.nav.govt,        href:GOVT },
+    { label:t.nav.contact,     href:CONTACT },
   ];
   return (
     <nav className="ai-nav" style={{ position:'fixed', top:0, left:0, right:0, zIndex:100, background:scrolled?'var(--surface)':'transparent', borderBottom:scrolled?'1px solid var(--border)':'1px solid transparent', boxShadow:scrolled?'var(--shadow)':'none', backdropFilter:scrolled?'blur(12px)':'none', transition:'all 0.3s', padding:'0 clamp(16px,5vw,80px)' }}>
@@ -295,7 +437,7 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
             <div style={{ fontSize:nfs-3, color:'var(--text3)', letterSpacing:'0.08em', textTransform:'uppercase', marginTop:-2 }}>Consulting</div>
           </div>
         </a>
-        <div style={{ display:'flex', alignItems:'center', gap:2 }}>
+        <div className="desktop-nav" style={{ display:'flex', alignItems:'center', gap:2 }}>
           {links.map(l => (
             <a key={l.href} href={l.href} style={{ color:l.active?'#1a56db':'var(--text2)', textDecoration:'none', fontSize:nfs, fontWeight:l.active?700:500, padding:'6px 10px', borderRadius:6, transition:'all 0.15s', background:l.active?'rgba(26,86,219,0.08)':'transparent' }}
               onMouseEnter={e=>{ e.target.style.color='#1a56db'; e.target.style.background='var(--bg2)'; }}
@@ -312,7 +454,7 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
           <button onClick={toggleDark} style={{ background:'none', border:'1.5px solid var(--border)', borderRadius:999, padding:'6px 10px', cursor:'pointer', color:'var(--text2)', fontSize:nfs, display:'flex', alignItems:'center', gap:5, transition:'all 0.2s' }}>
             <span style={{ fontSize:15 }}>{dark?'☀️':'🌙'}</span>
           </button>
-          <button onClick={()=>setOpen(!open)} style={{ background:'none', border:'none', cursor:'pointer', padding:6, color:'var(--text)', display:'none' }} className="mobile-menu-btn">
+          <button onClick={()=>setOpen(!open)} className="hamburger" style={{ background:'none', border:'none', cursor:'pointer', padding:6, color:'var(--text)', display:'none' }}>
             <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2">
               {open?<><line x1="4" y1="4" x2="18" y2="18"/><line x1="18" y1="4" x2="4" y2="18"/></>:<><line x1="3" y1="7" x2="19" y2="7"/><line x1="3" y1="12" x2="19" y2="12"/><line x1="3" y1="17" x2="19" y2="17"/></>}
             </svg>
@@ -361,7 +503,7 @@ function Hero({ t }) {
             </a>
           </div>
         </div>
-        <HeroImage />
+        <InfraAnimation labels={t.heroLabels} />
       </div>
     </section>
   );
@@ -398,12 +540,12 @@ function VendorMarquee() {
 function ActivityCard({ activity:a }) {
   const [hovered, setHovered] = useState(false);
   return (
-    <div onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}
+    <div className="activity-card" onMouseEnter={()=>setHovered(true)} onMouseLeave={()=>setHovered(false)}
       style={{ display:'grid', gridTemplateColumns:'80px 1fr', background:'var(--surface2)', border:`1px solid ${hovered?a.accent+'44':'var(--border)'}`, borderRadius:18, overflow:'hidden', boxShadow:hovered?'var(--shadow-lg)':'var(--shadow)', transform:hovered?'translateY(-2px)':'none', transition:'all 0.25s' }}>
-      <div style={{ background:`linear-gradient(180deg,${a.accent},${a.accent}88)`, display:'flex', alignItems:'center', justifyContent:'center', padding:'28px 0' }}>
+      <div className="activity-num" style={{ background:`linear-gradient(180deg,${a.accent},${a.accent}88)`, display:'flex', alignItems:'center', justifyContent:'center', padding:'28px 0' }}>
         <span style={{ fontFamily:'Sora,sans-serif', fontWeight:800, fontSize:22, color:'rgba(255,255,255,0.9)' }}>{a.num}</span>
       </div>
-      <div style={{ padding:'28px 32px', display:'grid', gridTemplateColumns:'1fr auto', gap:24, alignItems:'start' }}>
+      <div className="activity-body" style={{ padding:'28px 32px', display:'grid', gridTemplateColumns:'1fr auto', gap:24, alignItems:'start' }}>
         <div>
           <div style={{ marginBottom:6 }}>
             <span style={{ fontSize:11, color:a.accent, fontWeight:700, textTransform:'uppercase', letterSpacing:'0.07em' }}>{a.subtitle}</span>
@@ -476,7 +618,7 @@ function Footer({ t, lang }) {
           <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:15, color:'var(--text)' }}>Access Infra</span>
         </div>
         <div style={{ display:'flex', gap:20, flexWrap:'wrap' }}>
-          {[[nav.home,HOME],[nav.about,ABOUT],[nav.govt,GOVT],[nav.contact,CONTACT]].map(([l,h]) => (
+          {[[nav.home,HOME],[nav.about,ABOUT],[nav.services,ABOUT+'#services'],[nav.smartSchool,ABOUT+'#smart-school'],[nav.caseStudies,ABOUT+'#case-studies'],[nav.govt,GOVT],[nav.contact,CONTACT]].map(([l,h]) => (
             <a key={h} href={h} style={{ color:'var(--text3)', textDecoration:'none', fontSize:12.5, transition:'color 0.2s' }}
               onMouseEnter={e=>e.target.style.color='#1a56db'} onMouseLeave={e=>e.target.style.color='var(--text3)'}>{l}</a>
           ))}
