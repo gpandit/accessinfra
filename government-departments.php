@@ -14,7 +14,7 @@
 }
 [data-theme="dark"] {
   --bg: #080f1e; --bg2: #0d1a30; --bg3: #132040;
-  --surface: #0f1f3d; --surface2: #132040;
+  --surface: #1c3a6b; --surface2: #132040;
   --text: #f1f5f9; --text2: #cbd5e1; --text3: #94a3b8;
   --border: #1e3254;
   --shadow: 0 4px 24px rgba(0,0,0,0.4);
@@ -35,6 +35,8 @@ body[data-lang="te"] h1, body[data-lang="te"] h2, body[data-lang="te"] h3, body[
 ::-webkit-scrollbar-thumb { background:var(--blue); border-radius:3px; }
 .grid-dots { background-image:radial-gradient(circle,var(--border) 1px,transparent 1px); background-size:28px 28px; }
 .content-zoom { transition:zoom 0.2s ease; }
+.brand-logo { border-radius:8px; transition:background 0.2s, padding 0.2s; }
+[data-theme="dark"] .brand-logo { background:#fff; padding:6px 10px; }
 @media (max-width:900px) { .desktop-controls { display:none !important; } .desktop-nav { display:none !important; } .hamburger { display:flex !important; } }
 @media (max-width:768px) { .two-col { grid-template-columns:1fr !important; } }
 </style>
@@ -299,7 +301,7 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
   return (
     <nav className="ai-nav" style={{ position:'sticky', top:0, left:0, right:0, zIndex:100, background:'var(--surface)', borderBottom:'1px solid var(--border)', boxShadow:scrolled?'var(--shadow)':'none', backdropFilter:'blur(12px)', transition:'box-shadow 0.3s', padding:'0 clamp(16px,5vw,80px)' }}>
       <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', alignItems:'center', justifyContent:'space-between', height:68 }}>
-        <a href={HOME} style={{ textDecoration:'none', display:'flex', alignItems:'center' }}>
+        <a href={HOME} className="brand-logo" style={{ textDecoration:'none', display:'flex', alignItems:'center' }}>
           <img src={LOGO_URL} alt="Access Infra" style={{ height:42, width:'auto', display:'block' }} />
         </a>
         <div className="desktop-nav" style={{ display:'flex', alignItems:'center', gap:2 }}>
@@ -467,7 +469,7 @@ function Footer({ t, lang }) {
   return (
     <footer style={{ background:'var(--bg2)', borderTop:'1px solid var(--border)', padding:'clamp(20px,3vw,40px) clamp(16px,5vw,80px)' }}>
       <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:16 }}>
-        <div style={{ display:'flex', alignItems:'center' }}>
+        <div className="brand-logo" style={{ display:'flex', alignItems:'center' }}>
           <img src={LOGO_URL} alt="Access Infra" style={{ height:32, width:'auto', display:'block' }} />
         </div>
         <div style={{ display:'flex', gap:20, flexWrap:'wrap' }}>
