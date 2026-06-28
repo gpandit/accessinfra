@@ -249,13 +249,15 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
   );
 }
 
-function Hero({ lang }) {
+function Hero({ lang, heroZoom=1 }) {
   const t = T[lang].hero;
   return (
-    <section id="top" style={{ minHeight:'100vh', display:'flex', flexDirection:'column', justifyContent:'center', padding:'clamp(100px,12vw,140px) clamp(16px,5vw,80px) 80px', background:'linear-gradient(135deg,#0c1f3f 0%,#1e3a8a 55%,#1a56db 100%)', position:'relative', overflow:'hidden' }}>
-      <DotMorph shapes={AI_SHAPES.INFRA} fullBleed />
-      <div style={{ position:'absolute', inset:0, zIndex:1, background:'linear-gradient(180deg,rgba(12,31,63,0.35) 0%,rgba(12,31,63,0.55) 100%)' }}></div>
-      <div style={{ maxWidth:1280, margin:'0 auto', width:'100%', position:'relative', zIndex:2 }}>
+    <section id="top" style={{ minHeight:'100vh', display:'flex', flexDirection:'column', justifyContent:'center', padding:'clamp(100px,12vw,140px) clamp(16px,5vw,80px) 80px', background:'#0c1f3f', position:'relative', overflow:'visible' }}>
+      <div style={{ position:'absolute', top:0, left:0, right:0, height:'100vh', overflow:'hidden', background:'linear-gradient(135deg,#0c1f3f 0%,#1e3a8a 55%,#1a56db 100%)', zIndex:0 }}>
+        <DotMorph shapes={AI_SHAPES.INFRA} fullBleed />
+        <div style={{ position:'absolute', inset:0, zIndex:1, background:'linear-gradient(180deg,rgba(12,31,63,0.35) 0%,rgba(12,31,63,0.55) 100%)' }}></div>
+      </div>
+      <div style={{ maxWidth:1280, margin:'0 auto', width:'100%', position:'relative', zIndex:2, zoom:heroZoom }}>
         <div className="two-col" style={{ display:'grid', gridTemplateColumns:'1fr auto', gap:40, alignItems:'center' }}>
           <div style={{ maxWidth:720 }}>
             <div style={{ display:'inline-flex', alignItems:'center', gap:8, marginBottom:24, background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.25)', borderRadius:999, padding:'5px 14px 5px 10px' }}>
@@ -661,8 +663,8 @@ function App() {
   return (
     <>
       <Nav dark={dark} toggleDark={()=>setDark(d=>!d)} lang={lang} setLang={setLang} fsIdx={fsIdx} cycleFontSize={cycleFontSize} />
+      <Hero {...props} heroZoom={zoom} />
       <div className="content-zoom" style={{ zoom, transformOrigin:'top center' }}>
-        <Hero {...props} />
         <About {...props} />
         <Services {...props} />
         <SmartSchool {...props} />

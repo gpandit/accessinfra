@@ -337,12 +337,14 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
   );
 }
 
-function Hero({ t }) {
+function Hero({ t, heroZoom=1 }) {
   return (
-    <section id="top" style={{ minHeight:'78vh', display:'flex', flexDirection:'column', justifyContent:'center', padding:'clamp(100px,12vw,140px) clamp(16px,5vw,80px) 60px', background:'linear-gradient(135deg,#0c1f3f 0%,#1e3a8a 55%,#1a56db 100%)', position:'relative', overflow:'hidden' }}>
-      <DotMorph shapes={AI_SHAPES.INDIA_STATES} polygons={AI_SHAPES.INDIA_STATE_POLYGONS} fillRatio={0.4} labels={AI_SHAPES.INDIA_STATE_NAMES} intervalMs={2200} fullBleed />
-      <div style={{ position:'absolute', inset:0, zIndex:1, background:'linear-gradient(180deg,rgba(12,31,63,0.35) 0%,rgba(12,31,63,0.55) 100%)' }}></div>
-      <div style={{ maxWidth:1280, margin:'0 auto', width:'100%', position:'relative', zIndex:2 }}>
+    <section id="top" style={{ minHeight:'78vh', display:'flex', flexDirection:'column', justifyContent:'center', padding:'clamp(100px,12vw,140px) clamp(16px,5vw,80px) 60px', background:'#0c1f3f', position:'relative', overflow:'visible' }}>
+      <div style={{ position:'absolute', top:0, left:0, right:0, height:'78vh', overflow:'hidden', background:'linear-gradient(135deg,#0c1f3f 0%,#1e3a8a 55%,#1a56db 100%)', zIndex:0 }}>
+        <DotMorph shapes={AI_SHAPES.INDIA_STATES} polygons={AI_SHAPES.INDIA_STATE_POLYGONS} fillRatio={0.4} labels={AI_SHAPES.INDIA_STATE_NAMES} intervalMs={2200} fullBleed />
+        <div style={{ position:'absolute', inset:0, zIndex:1, background:'linear-gradient(180deg,rgba(12,31,63,0.35) 0%,rgba(12,31,63,0.55) 100%)' }}></div>
+      </div>
+      <div style={{ maxWidth:1280, margin:'0 auto', width:'100%', position:'relative', zIndex:2, zoom:heroZoom }}>
         <div style={{ marginBottom:18 }}>
           <a href={HOME} style={{ display:'inline-flex', alignItems:'center', gap:6, color:'rgba(255,255,255,0.75)', fontSize:13, textDecoration:'none', fontWeight:500 }}
             onMouseEnter={e=>e.currentTarget.style.color='#fff'} onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.75)'}>{t.back}</a>
@@ -505,8 +507,8 @@ function App() {
   return (
     <>
       <Nav dark={dark} toggleDark={()=>setDark(d=>!d)} lang={lang} setLang={setLang} fsIdx={fsIdx} cycleFontSize={cycleFontSize} />
+      <Hero t={t} heroZoom={zoom} />
       <div className="content-zoom" style={{ zoom, transformOrigin:'top center' }}>
-        <Hero t={t} />
         <DeptCards t={t} />
         <ApproachSection t={t} />
         <CTABanner t={t} />
