@@ -102,10 +102,10 @@ const T = {
       { id:'irrigation',name:'Irrigation',              desc:'The Irrigation Department manages dams, canals, reservoirs, and water distribution networks critical to agriculture. It oversees construction and maintenance of irrigation infrastructure, water allocation for farmers, and flood control systems.', focus:['Canal & dam monitoring systems','Water level sensors & IoT','Agricultural water management','Flood early warning systems','GIS-based asset mapping'] },
     ],
     steps:[
-      { num:'01', title:'Access & Introductions',  desc:'We arrange formal introductions and meetings with decision-makers so your product or service gets evaluated on merit by the right people.' },
-      { num:'02', title:'Relationship Mapping',    desc:'We identify and maintain relationships with senior IAS/IPS officers, department secretaries, and elected representatives relevant to your sector.' },
-      { num:'03', title:'Policy Advocacy',         desc:'We represent your interests in policy formulation discussions, pre-budget consultations, and departmental review meetings.' },
-      { num:'04', title:'Tender Intelligence',     desc:'We obtain early intelligence on upcoming tenders, budget allocations, and scheme launches before they enter the public domain.' },
+      { num:'01', title:'Access & Structured Introductions',  desc:'We facilitate formal and transparent introductions with relevant departments and authorized stakeholders, ensuring your products and services are presented through appropriate institutional channels for fair and merit-based evaluation.' },
+      { num:'02', title:'Stakeholder Engagement & Relationship Understanding', desc:'We support clients in understanding institutional frameworks and engaging constructively with department officials, administrative leadership, and public representatives—helping build long-term, professional alignment with sector priorities.' },
+      { num:'03', title:'Tender & Scheme Insights', desc:'We provide timely insights on upcoming tenders, budgetary directions, and government schemes based on publicly available information, sectoral trends, and policy developments—helping clients prepare proactively and responsibly.' },
+      { num:'04', title:'Policy & Technical Advisory Support', desc:'We offer guidance by closely tracking policy developments, participating in industry consultations where appropriate, and helping clients align their solutions with evolving technical, financial, and regulatory expectations of government departments.' },
     ],
   },
   kn: {
@@ -137,10 +137,10 @@ const T = {
       { id:'irrigation',name:'ನೀರಾವರಿ', desc:'ಅಣೆಕಟ್ಟೆ, ಕಾಲುವೆ ಮತ್ತು ನೀರು ವಿತರಣಾ ನಿರ್ವಹಣೆ.', focus:['ಕಾಲುವೆ ಮೇಲ್ವಿಚಾರಣೆ','ನೀರಿನ ಮಟ್ಟ IoT','ಕೃಷಿ ನೀರು','ಪ್ರವಾಹ ಎಚ್ಚರಿಕೆ','GIS ನಕ್ಷೆ'] },
     ],
     steps:[
-      { num:'01', title:'ಪ್ರವೇಶ ಮತ್ತು ಪರಿಚಯ', desc:'ನಿಮ್ಮ ಉತ್ಪನ್ನ ಸರಿಯಾದ ನಿರ್ಧಾರಕರಿಂದ ಮೌಲ್ಯಮಾಪನ ಮಾಡಲ್ಪಡುವಂತೆ ಸಭೆಗಳನ್ನು ಏರ್ಪಡಿಸುತ್ತೇವೆ.' },
-      { num:'02', title:'ಸಂಬಂಧ ನಿರ್ಮಾಣ', desc:'ಹಿರಿಯ IAS/IPS ಅಧಿಕಾರಿಗಳು ಮತ್ತು ಚುನಾಯಿತ ಪ್ರತಿನಿಧಿಗಳೊಂದಿಗೆ ಸಂಬಂಧ ನಿರ್ವಹಿಸುತ್ತೇವೆ.' },
-      { num:'03', title:'ನೀತಿ ಪ್ರತಿಪಾದನೆ', desc:'ನೀತಿ ರಚನೆ ಮತ್ತು ಬಜೆಟ್ ಸಮಾಲೋಚನೆಗಳಲ್ಲಿ ನಿಮ್ಮ ಹಿತ ಪ್ರತಿನಿಧಿಸುತ್ತೇವೆ.' },
-      { num:'04', title:'ಟೆಂಡರ್ ಮಾಹಿತಿ', desc:'ಮುಂಬರುವ ಟೆಂಡರ್‌ಗಳ ಆರಂಭಿಕ ಮಾಹಿತಿ ಪಡೆಯುತ್ತೇವೆ.' },
+      { num:'01', title:'ಪ್ರವೇಶ ಮತ್ತು ರಚನಾತ್ಮಕ ಪರಿಚಯಗಳು', desc:'ನಿಮ್ಮ ಉತ್ಪನ್ನಗಳು ಮತ್ತು ಸೇವೆಗಳು ಸೂಕ್ತ ಸಾಂಸ್ಥಿಕ ಮಾರ್ಗಗಳ ಮೂಲಕ ನ್ಯಾಯಯುತ ಮತ್ತು ಮೆರಿಟ್-ಆಧಾರಿತ ಮೌಲ್ಯಮಾಪನಕ್ಕೆ ಒಳಪಡುವಂತೆ, ಸಂಬಂಧಿತ ಇಲಾಖೆಗಳು ಮತ್ತು ಅಧಿಕೃತ ಮಧ್ಯಸ್ಥಗಾರರೊಂದಿಗೆ ಔಪಚಾರಿಕ ಮತ್ತು ಪಾರದರ್ಶಕ ಪರಿಚಯಗಳನ್ನು ನಾವು ಸುಗಮಗೊಳಿಸುತ್ತೇವೆ.' },
+      { num:'02', title:'ಮಧ್ಯಸ್ಥಗಾರರ ಸಂಪರ್ಕ ಮತ್ತು ಸಂಬಂಧ ತಿಳುವಳಿಕೆ', desc:'ಸಾಂಸ್ಥಿಕ ಚೌಕಟ್ಟುಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಮತ್ತು ಇಲಾಖಾ ಅಧಿಕಾರಿಗಳು, ಆಡಳಿತಾತ್ಮಕ ನಾಯಕತ್ವ ಹಾಗೂ ಸಾರ್ವಜನಿಕ ಪ್ರತಿನಿಧಿಗಳೊಂದಿಗೆ ರಚನಾತ್ಮಕವಾಗಿ ತೊಡಗಿಸಿಕೊಳ್ಳಲು ನಾವು ಗ್ರಾಹಕರಿಗೆ ಸಹಾಯ ಮಾಡುತ್ತೇವೆ — ವಲಯದ ಆದ್ಯತೆಗಳೊಂದಿಗೆ ದೀರ್ಘಕಾಲೀನ, ವೃತ್ತಿಪರ ಹೊಂದಾಣಿಕೆಯನ್ನು ನಿರ್ಮಿಸಲು ಇದು ಸಹಕಾರಿಯಾಗುತ್ತದೆ.' },
+      { num:'03', title:'ಟೆಂಡರ್ ಮತ್ತು ಯೋಜನಾ ಒಳನೋಟಗಳು', desc:'ಸಾರ್ವಜನಿಕವಾಗಿ ಲಭ್ಯವಿರುವ ಮಾಹಿತಿ, ವಲಯದ ಪ್ರವೃತ್ತಿಗಳು ಮತ್ತು ನೀತಿ ಬೆಳವಣಿಗೆಗಳ ಆಧಾರದ ಮೇಲೆ ಮುಂಬರುವ ಟೆಂಡರ್‌ಗಳು, ಬಜೆಟ್ ನಿರ್ದೇಶನಗಳು ಮತ್ತು ಸರ್ಕಾರಿ ಯೋಜನೆಗಳ ಬಗ್ಗೆ ಸಕಾಲಿಕ ಒಳನೋಟಗಳನ್ನು ನಾವು ನೀಡುತ್ತೇವೆ — ಇದು ಗ್ರಾಹಕರಿಗೆ ಪೂರ್ವಭಾವಿಯಾಗಿ ಮತ್ತು ಜವಾಬ್ದಾರಿಯುತವಾಗಿ ತಯಾರಾಗಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.' },
+      { num:'04', title:'ನೀತಿ ಮತ್ತು ತಾಂತ್ರಿಕ ಸಲಹಾ ಬೆಂಬಲ', desc:'ನೀತಿ ಬೆಳವಣಿಗೆಗಳನ್ನು ನಿಕಟವಾಗಿ ಅನುಸರಿಸುವ ಮೂಲಕ, ಸೂಕ್ತವಾದಲ್ಲಿ ಉದ್ಯಮ ಸಮಾಲೋಚನೆಗಳಲ್ಲಿ ಭಾಗವಹಿಸುವ ಮೂಲಕ, ಮತ್ತು ಸರ್ಕಾರಿ ಇಲಾಖೆಗಳ ವಿಕಸನಗೊಳ್ಳುತ್ತಿರುವ ತಾಂತ್ರಿಕ, ಆರ್ಥಿಕ ಮತ್ತು ನಿಯಂತ್ರಕ ನಿರೀಕ್ಷೆಗಳೊಂದಿಗೆ ಗ್ರಾಹಕರ ಪರಿಹಾರಗಳನ್ನು ಹೊಂದಿಸಲು ಸಹಾಯ ಮಾಡುವ ಮೂಲಕ ನಾವು ಮಾರ್ಗದರ್ಶನ ನೀಡುತ್ತೇವೆ.' },
     ],
   },
   hi: {
@@ -169,10 +169,10 @@ const T = {
       { id:'irrigation',name:'सिंचाई', desc:'बांध, नहर और जल वितरण प्रबंधन।', focus:['नहर निगरानी','IoT सेंसर','कृषि जल','बाढ़ चेतावनी','GIS'] },
     ],
     steps:[
-      { num:'01', title:'पहुँच और परिचय', desc:'सही निर्णय-निर्माताओं से औपचारिक मुलाकात।' },
-      { num:'02', title:'संबंध मानचित्रण', desc:'IAS/IPS अधिकारियों से संबंध बनाए रखना।' },
-      { num:'03', title:'नीति समर्थन', desc:'नीति चर्चाओं में आपके हित का प्रतिनिधित्व।' },
-      { num:'04', title:'टेंडर इंटेलिजेंस', desc:'आने वाले टेंडरों की अग्रिम जानकारी।' },
+      { num:'01', title:'पहुँच एवं संरचित परिचय', desc:'हम संबंधित विभागों और अधिकृत हितधारकों के साथ औपचारिक एवं पारदर्शी परिचय की सुविधा प्रदान करते हैं, जिससे आपके उत्पाद और सेवाएं उचित संस्थागत माध्यमों से प्रस्तुत होकर निष्पक्ष एवं योग्यता-आधारित मूल्यांकन प्राप्त करें।' },
+      { num:'02', title:'हितधारक संपर्क एवं संबंध समझ', desc:'हम ग्राहकों को संस्थागत ढाँचे को समझने और विभागीय अधिकारियों, प्रशासनिक नेतृत्व तथा जनप्रतिनिधियों के साथ सार्थक रूप से जुड़ने में सहायता करते हैं — जिससे क्षेत्रीय प्राथमिकताओं के साथ दीर्घकालिक, पेशेवर तालमेल बनता है।' },
+      { num:'03', title:'टेंडर एवं योजना संबंधी जानकारी', desc:'हम सार्वजनिक रूप से उपलब्ध जानकारी, क्षेत्रीय रुझानों और नीतिगत विकास के आधार पर आने वाले टेंडरों, बजटीय दिशाओं और सरकारी योजनाओं पर समय पर जानकारी प्रदान करते हैं — जिससे ग्राहक सक्रिय और जिम्मेदारी से तैयारी कर सकें।' },
+      { num:'04', title:'नीति एवं तकनीकी सलाहकार सहायता', desc:'हम नीतिगत विकास पर बारीकी से नज़र रखते हुए, जहाँ उपयुक्त हो उद्योग सलाह-मशविरों में भाग लेकर, और सरकारी विभागों की तकनीकी, वित्तीय एवं नियामक अपेक्षाओं के साथ ग्राहकों के समाधानों को संतुलित करने में सहायता करके मार्गदर्शन प्रदान करते हैं।' },
     ],
   },
   te: {
@@ -201,10 +201,10 @@ const T = {
       { id:'irrigation',name:'నీటిపారుదల', desc:'ఆనకట్టలు, కాలువలు మరియు జల నిర్వహణ.', focus:['కాలువ పర్యవేక్షణ','IoT సెన్సర్లు','వ్యవసాయ జలం','వరద హెచ్చరిక','GIS'] },
     ],
     steps:[
-      { num:'01', title:'యాక్సెస్ & పరిచయాలు', desc:'సరైన నిర్ణయాధికారులతో అధికారిక సమావేశాలు.' },
-      { num:'02', title:'రిలేషన్‌షిప్ మ్యాపింగ్', desc:'IAS/IPS అధికారులతో సంబంధాలు నిర్వహించడం.' },
-      { num:'03', title:'పాలసీ అడ్వకసీ', desc:'పాలసీ చర్చలలో మీ ప్రయోజనాల ప్రాతినిధ్యం.' },
-      { num:'04', title:'టెండర్ ఇంటెలిజెన్స్', desc:'రాబోయే టెండర్లపై ముందస్తు సమాచారం.' },
+      { num:'01', title:'యాక్సెస్ & స్ట్రక్చర్డ్ పరిచయాలు', desc:'మీ ఉత్పత్తులు మరియు సేవలు సముచితమైన సంస్థాగత మార్గాల ద్వారా న్యాయమైన మరియు మెరిట్-ఆధారిత మూల్యాంకనానికి ప్రस్తుతం చేయబడేలా, సంబంధిత శాఖలు మరియు అధికారిక భాగస్వాములతో అధికారిక మరియు పారదర్శక పరిచయాలను మేము సులభతరం చేస్తాం.' },
+      { num:'02', title:'భాగస్వాముల సంబంధం & అవగాహన', desc:'సంస్థాగత చట్రాలను అర్థం చేసుకోవడంలో మరియు శాఖా అధికారులు, పరిపాలనా నాయకత్వం, ప్రజా ప్రతినిధులతో నిర్మాణాత్మకంగా సంబంధం పెట్టుకోవడంలో మేము క్లయింట్లకు తోడ్పడతాం — ఇది రంగ ప్రాధాన్యతలతో దీర్ఘకాలిక, వృత్తిపరమైన అనుసంధానాన్ని నిర్మించడంలో సహాయపడుతుంది.' },
+      { num:'03', title:'టెండర్ & పథకాల అంతర్దృష్టులు', desc:'ప్రజలకు అందుబాటులో ఉన్న సమాచారం, రంగ ధోరణులు మరియు పాలసీ పరిణామాల ఆధారంగా రాబోయే టెండర్లు, బడ్జెట్ దిక్సూచనలు మరియు ప్రభుత్వ పథకాలపై మేము సకాలంలో అంతర్దృష్టులను అందిస్తాం — ఇది క్లయింట్లు ముందస్తుగా మరియు బాధ్యతాయుతంగా సన్నద్ధం కావడానికి సహాయపడుతుంది.' },
+      { num:'04', title:'పాలసీ & సాంకేతిక సలహా మద్దతు', desc:'పాలసీ పరిణామాలను నిశితంగా పరిశీలించడం, తగినప్పుడు పరిశ్రమ సంప్రదింపులలో పాల్గొనడం, మరియు ప్రభుత్వ శాఖల అభివృద్ధి చెందుతున్న సాంకేతిక, ఆర్థిక మరియు నియంత్రణ అంచనాలకు అనుగుణంగా క్లయింట్ల పరిష్కారాలను సరిచేయడంలో సహాయపడడం ద్వారా మేము మార్గదర్శకత్వాన్ని అందిస్తాం.' },
     ],
   },
 };
