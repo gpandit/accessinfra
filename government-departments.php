@@ -4,13 +4,13 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --navy: #042f2e; --blue: #14b8a6; --teal: #0f766e;
+  --navy: #315C2B; --blue: #FFC100; --teal: #F5D000;
   --bg: #ffffff; --bg2: #f1f5f9; --bg3: #e2e8f0;
   --surface: #ffffff; --surface2: #f8fafc;
   --text: #0f172a; --text2: #334155; --text3: #64748b;
   --border: #e2e8f0;
-  --shadow: 0 4px 24px rgba(4,47,46,0.08);
-  --shadow-lg: 0 12px 48px rgba(4,47,46,0.14);
+  --shadow: 0 4px 24px rgba(49,92,43,0.08);
+  --shadow-lg: 0 12px 48px rgba(49,92,43,0.14);
 }
 [data-theme="dark"] {
   --bg: #080f1e; --bg2: #0d1a30; --bg3: #132040;
@@ -29,7 +29,7 @@ h1, h2, h3, h4 { font-family:'Sora',sans-serif; line-height:1.15; letter-spacing
 body[data-lang="kn"] h1, body[data-lang="kn"] h2, body[data-lang="kn"] h3, body[data-lang="kn"] h4 { font-family:'Noto Sans Kannada',sans-serif; letter-spacing:0; }
 body[data-lang="hi"] h1, body[data-lang="hi"] h2, body[data-lang="hi"] h3, body[data-lang="hi"] h4 { font-family:'Noto Sans Devanagari',sans-serif; letter-spacing:0; }
 body[data-lang="te"] h1, body[data-lang="te"] h2, body[data-lang="te"] h3, body[data-lang="te"] h4 { font-family:'Noto Sans Telugu',sans-serif; letter-spacing:0; }
-::selection { background:#14b8a633; }
+::selection { background:#FFC10033; }
 ::-webkit-scrollbar { width:6px; }
 ::-webkit-scrollbar-track { background:var(--bg2); }
 ::-webkit-scrollbar-thumb { background:var(--blue); border-radius:3px; }
@@ -207,8 +207,8 @@ const T = {
 };
 
 function Tag({ children, color='blue' }) {
-  const bg  = color==='teal'?'rgba(15,118,110,0.1)':'rgba(20,184,166,0.1)';
-  const col = color==='teal'?'#0f766e':'#14b8a6';
+  const bg  = color==='teal'?'rgba(245,208,0,0.1)':'rgba(255,193,0,0.1)';
+  const col = color==='teal'?'#F5D000':'#FFC100';
   return <span style={{ display:'inline-block', background:bg, color:col, fontSize:12, fontWeight:700, letterSpacing:'0.06em', textTransform:'uppercase', padding:'4px 12px', borderRadius:999 }}>{children}</span>;
 }
 
@@ -244,14 +244,14 @@ function LangMenu({ lang, setLang, nfs }) {
   return (
     <div ref={ref} style={{ position:'relative' }}>
       <button onClick={()=>setOpen(o=>!o)} style={{ display:'flex', alignItems:'center', gap:6, background:'var(--bg2)', border:'1.5px solid var(--border)', borderRadius:8, padding:'6px 10px', cursor:'pointer', color:'var(--text2)', fontSize:nfs, fontWeight:600, fontFamily:'Inter,sans-serif', transition:'border-color 0.2s' }}
-        onMouseEnter={e=>e.currentTarget.style.borderColor='#14b8a6'} onMouseLeave={e=>e.currentTarget.style.borderColor='var(--border)'}>
+        onMouseEnter={e=>e.currentTarget.style.borderColor='#FFC100'} onMouseLeave={e=>e.currentTarget.style.borderColor='var(--border)'}>
         🌐 {cur.label}
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2"><polyline points={open?'2,8 6,4 10,8':'2,4 6,8 10,4'}/></svg>
       </button>
       {open && (
         <div style={{ position:'absolute', top:'calc(100% + 6px)', right:0, zIndex:200, background:'var(--surface)', border:'1px solid var(--border)', borderRadius:10, boxShadow:'var(--shadow-lg)', overflow:'hidden', minWidth:140 }}>
           {LANGS.map(l => (
-            <button key={l.code} onClick={()=>{ setLang(l.code); setOpen(false); }} style={{ display:'block', width:'100%', textAlign:'left', padding:'10px 16px', background:lang===l.code?'var(--bg2)':'transparent', border:'none', cursor:'pointer', color:lang===l.code?'#14b8a6':'var(--text2)', fontSize:nfs, fontWeight:lang===l.code?700:400, fontFamily:'Inter,sans-serif' }}>
+            <button key={l.code} onClick={()=>{ setLang(l.code); setOpen(false); }} style={{ display:'block', width:'100%', textAlign:'left', padding:'10px 16px', background:lang===l.code?'var(--bg2)':'transparent', border:'none', cursor:'pointer', color:lang===l.code?'#FFC100':'var(--text2)', fontSize:nfs, fontWeight:lang===l.code?700:400, fontFamily:'Inter,sans-serif' }}>
               <span style={{ marginRight:8 }}>{l.label}</span>
               <span style={{ color:'var(--text3)', fontSize:nfs-1 }}>{l.full}</span>
             </button>
@@ -265,9 +265,9 @@ function LangMenu({ lang, setLang, nfs }) {
 function FontSizeBtn({ fsIdx, cycleFontSize, nfs }) {
   return (
     <button onClick={cycleFontSize} title={FS_STEPS[fsIdx].title} style={{ display:'flex', alignItems:'center', gap:5, background:'var(--bg2)', border:'1.5px solid var(--border)', borderRadius:8, padding:'5px 10px', cursor:'pointer', color:'var(--text2)', fontFamily:'Sora,sans-serif', fontWeight:700, lineHeight:1, whiteSpace:'nowrap' }}
-      onMouseEnter={e=>e.currentTarget.style.borderColor='#14b8a6'} onMouseLeave={e=>e.currentTarget.style.borderColor='var(--border)'}>
+      onMouseEnter={e=>e.currentTarget.style.borderColor='#FFC100'} onMouseLeave={e=>e.currentTarget.style.borderColor='var(--border)'}>
       <span style={{ display:'flex', gap:2, alignItems:'center', marginRight:2 }}>
-        {FS_STEPS.map((_,i) => <span key={i} style={{ width:4, height:4, borderRadius:'50%', background:i<=fsIdx?'#14b8a6':'var(--border)' }} />)}
+        {FS_STEPS.map((_,i) => <span key={i} style={{ width:4, height:4, borderRadius:'50%', background:i<=fsIdx?'#FFC100':'var(--border)' }} />)}
       </span>
       <span style={{ fontSize:nfs+fsIdx*1.5 }}>{FS_STEPS[fsIdx].label}</span>
     </button>
@@ -295,7 +295,7 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
     <nav className="ai-nav" style={{ position:'sticky', top:0, left:0, right:0, zIndex:100, background:'var(--surface)', borderBottom:'1px solid var(--border)', boxShadow:scrolled?'var(--shadow)':'none', backdropFilter:'blur(12px)', transition:'box-shadow 0.3s', padding:'0 clamp(16px,5vw,80px)' }}>
       <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', alignItems:'center', justifyContent:'space-between', height:68 }}>
         <a href={HOME} style={{ textDecoration:'none', display:'flex', alignItems:'center', gap:10 }}>
-          <div style={{ width:36, height:36, borderRadius:8, background:'linear-gradient(135deg,#14b8a6,#0f766e)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+          <div style={{ width:36, height:36, borderRadius:8, background:'linear-gradient(135deg,#FFC100,#F5D000)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
             <span style={{ color:'#fff', fontSize:16, fontWeight:800, fontFamily:'Sora,sans-serif' }}>A</span>
           </div>
           <div>
@@ -305,9 +305,9 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
         </a>
         <div className="desktop-nav" style={{ display:'flex', alignItems:'center', gap:2 }}>
           {links.map(l => (
-            <a key={l.href+l.label} href={l.href} style={{ color:l.active?'#14b8a6':'var(--text2)', textDecoration:'none', fontSize:nfs, fontWeight:l.active?700:500, padding:'6px 10px', borderRadius:6, background:l.active?'rgba(20,184,166,0.08)':'transparent', transition:'all 0.15s' }}
-              onMouseEnter={e=>{ e.target.style.color='#14b8a6'; e.target.style.background='var(--bg2)'; }}
-              onMouseLeave={e=>{ e.target.style.color=l.active?'#14b8a6':'var(--text2)'; e.target.style.background=l.active?'rgba(20,184,166,0.08)':'transparent'; }}>
+            <a key={l.href+l.label} href={l.href} style={{ color:l.active?'#FFC100':'var(--text2)', textDecoration:'none', fontSize:nfs, fontWeight:l.active?700:500, padding:'6px 10px', borderRadius:6, background:l.active?'rgba(255,193,0,0.08)':'transparent', transition:'all 0.15s' }}
+              onMouseEnter={e=>{ e.target.style.color='#FFC100'; e.target.style.background='var(--bg2)'; }}
+              onMouseLeave={e=>{ e.target.style.color=l.active?'#FFC100':'var(--text2)'; e.target.style.background=l.active?'rgba(255,193,0,0.08)':'transparent'; }}>
               {l.label}
             </a>
           ))}
@@ -338,9 +338,9 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
 
 function Hero({ t }) {
   return (
-    <section id="top" style={{ minHeight:'78vh', display:'flex', flexDirection:'column', justifyContent:'center', padding:'clamp(100px,12vw,140px) clamp(16px,5vw,80px) 60px', background:'linear-gradient(135deg,#042f2e 0%,#0f766e 55%,#14b8a6 100%)', position:'relative', overflow:'hidden' }}>
+    <section id="top" style={{ minHeight:'78vh', display:'flex', flexDirection:'column', justifyContent:'center', padding:'clamp(100px,12vw,140px) clamp(16px,5vw,80px) 60px', background:'linear-gradient(135deg,#315C2B 0%,#F5D000 55%,#FFC100 100%)', position:'relative', overflow:'hidden' }}>
       <DotMorph shapes={AI_SHAPES.INDIA_STATES} labels={['Karnataka','Telangana','Andhra Pradesh','Tamil Nadu','Maharashtra','Uttar Pradesh','Delhi']} fullBleed />
-      <div style={{ position:'absolute', inset:0, zIndex:1, background:'linear-gradient(180deg,rgba(4,47,46,0.35) 0%,rgba(4,47,46,0.55) 100%)' }}></div>
+      <div style={{ position:'absolute', inset:0, zIndex:1, background:'linear-gradient(180deg,rgba(49,92,43,0.35) 0%,rgba(49,92,43,0.55) 100%)' }}></div>
       <div style={{ maxWidth:1280, margin:'0 auto', width:'100%', position:'relative', zIndex:2 }}>
         <div style={{ marginBottom:18 }}>
           <a href={HOME} style={{ display:'inline-flex', alignItems:'center', gap:6, color:'rgba(255,255,255,0.75)', fontSize:13, textDecoration:'none', fontWeight:500 }}
@@ -350,14 +350,14 @@ function Hero({ t }) {
           <Tag>{t.heroTag}</Tag>
           {t.states.map(s => (
             <div key={s.name} style={{ display:'inline-flex', alignItems:'center', gap:8, background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.25)', borderRadius:999, padding:'5px 14px' }}>
-              <span style={{ width:6, height:6, borderRadius:'50%', background:'#6ee7b7', display:'inline-block' }}></span>
+              <span style={{ width:6, height:6, borderRadius:'50%', background:'#A9FDAC', display:'inline-block' }}></span>
               <span style={{ fontSize:12.5, color:'rgba(255,255,255,0.85)', fontWeight:500 }}>{t.activeLobbyist} — {s.name}</span>
             </div>
           ))}
         </div>
         <h1 style={{ fontSize:'clamp(32px,5vw,62px)', fontWeight:800, marginBottom:20, lineHeight:1.08, maxWidth:780, color:'#fff' }}>
           {t.heroH1a}<br />
-          <span style={{ color:'#a7f3d0' }}>{t.heroH1b}</span>
+          <span style={{ color:'#A9FDAC' }}>{t.heroH1b}</span>
         </h1>
         <p style={{ fontSize:'clamp(15px,1.6vw,18px)', color:'rgba(255,255,255,0.85)', maxWidth:620, lineHeight:1.85 }}>{t.heroDesc}</p>
         <div style={{ marginTop:32, display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(200px,1fr))', gap:14, maxWidth:760 }}>
@@ -389,11 +389,11 @@ function DeptCards({ t }) {
           {t.depts.map((dept,i) => (
             <Reveal key={dept.id} delay={(i%4)*60}>
               <div onClick={()=>setActive(active===dept.id?null:dept.id)}
-                style={{ background:'var(--surface2)', border:`1px solid ${active===dept.id?'#14b8a644':'var(--border)'}`, borderRadius:18, overflow:'hidden', boxShadow:active===dept.id?'var(--shadow-lg)':'var(--shadow)', transition:'all 0.25s', cursor:'pointer' }}>
+                style={{ background:'var(--surface2)', border:`1px solid ${active===dept.id?'#FFC10044':'var(--border)'}`, borderRadius:18, overflow:'hidden', boxShadow:active===dept.id?'var(--shadow-lg)':'var(--shadow)', transition:'all 0.25s', cursor:'pointer' }}>
                 <div style={{ padding:'22px 26px', display:'flex', alignItems:'center', gap:16 }}>
-                  <div style={{ width:48, height:48, borderRadius:12, background:'linear-gradient(135deg,#14b8a6,#0f766e)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:22, flexShrink:0 }}>{DEPT_ICONS[dept.id]||'🏛️'}</div>
+                  <div style={{ width:48, height:48, borderRadius:12, background:'linear-gradient(135deg,#FFC100,#F5D000)', display:'flex', alignItems:'center', justifyContent:'center', fontSize:22, flexShrink:0 }}>{DEPT_ICONS[dept.id]||'🏛️'}</div>
                   <div style={{ flex:1 }}>
-                    <div style={{ fontSize:11, color:'#14b8a6', fontWeight:700, textTransform:'uppercase', letterSpacing:'0.06em', marginBottom:3 }}>{t.deptLabel}</div>
+                    <div style={{ fontSize:11, color:'#FFC100', fontWeight:700, textTransform:'uppercase', letterSpacing:'0.06em', marginBottom:3 }}>{t.deptLabel}</div>
                     <h3 style={{ fontSize:17, fontWeight:700 }}>{dept.name}</h3>
                   </div>
                   <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" style={{ flexShrink:0, transform:active===dept.id?'rotate(180deg)':'none', transition:'transform 0.25s', color:'var(--text3)' }}><polyline points="5,8 10,13 15,8"/></svg>
@@ -404,7 +404,7 @@ function DeptCards({ t }) {
                     <div style={{ fontSize:12, color:'var(--text3)', fontWeight:600, textTransform:'uppercase', letterSpacing:'0.06em', marginBottom:10 }}>{t.focusLabel}</div>
                     <div style={{ display:'flex', flexWrap:'wrap', gap:7 }}>
                       {dept.focus.map(f => (
-                        <span key={f} style={{ background:'rgba(20,184,166,0.07)', color:'#14b8a6', fontSize:12, fontWeight:600, padding:'4px 10px', borderRadius:6, border:'1px solid rgba(20,184,166,0.15)' }}>{f}</span>
+                        <span key={f} style={{ background:'rgba(255,193,0,0.07)', color:'#FFC100', fontSize:12, fontWeight:600, padding:'4px 10px', borderRadius:6, border:'1px solid rgba(255,193,0,0.15)' }}>{f}</span>
                       ))}
                     </div>
                   </div>
@@ -432,7 +432,7 @@ function ApproachSection({ t }) {
           {t.steps.map((step, i) => (
             <Reveal key={i} delay={i*70}>
               <div style={{ background:'var(--surface)', border:'1px solid var(--border)', borderRadius:16, padding:26, boxShadow:'var(--shadow)' }}>
-                <div style={{ width:40, height:40, borderRadius:10, background:'linear-gradient(135deg,#14b8a6,#0f766e)', color:'#fff', display:'flex', alignItems:'center', justifyContent:'center', fontWeight:800, fontFamily:'Sora,sans-serif', fontSize:14, marginBottom:16 }}>{step.num}</div>
+                <div style={{ width:40, height:40, borderRadius:10, background:'linear-gradient(135deg,#FFC100,#F5D000)', color:'#fff', display:'flex', alignItems:'center', justifyContent:'center', fontWeight:800, fontFamily:'Sora,sans-serif', fontSize:14, marginBottom:16 }}>{step.num}</div>
                 <h3 style={{ fontSize:16, fontWeight:700, marginBottom:10 }}>{step.title}</h3>
                 <p style={{ fontSize:13.5, color:'var(--text3)', lineHeight:1.7 }}>{step.desc}</p>
               </div>
@@ -447,14 +447,14 @@ function ApproachSection({ t }) {
 function CTABanner({ t }) {
   return (
     <section style={{ padding:'clamp(50px,7vw,100px) clamp(16px,5vw,80px)', background:'var(--navy)', position:'relative', overflow:'hidden' }}>
-      <div style={{ position:'absolute', top:'-30%', right:'-10%', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle,rgba(20,184,166,0.2),transparent 70%)' }}></div>
+      <div style={{ position:'absolute', top:'-30%', right:'-10%', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle,rgba(255,193,0,0.2),transparent 70%)' }}></div>
       <Reveal style={{ maxWidth:1280, margin:'0 auto', position:'relative', zIndex:1, display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:28 }}>
         <div>
           <h2 style={{ fontSize:'clamp(22px,3vw,38px)', fontWeight:800, color:'#fff', marginBottom:10 }}>{t.ctaH2}</h2>
           <p style={{ color:'rgba(255,255,255,0.6)', fontSize:15, maxWidth:480 }}>{t.ctaDesc}</p>
         </div>
         <div style={{ display:'flex', gap:12, flexWrap:'wrap' }}>
-          <a href={CONTACT} style={{ background:'linear-gradient(135deg,#14b8a6,#0f766e)', color:'#fff', textDecoration:'none', padding:'13px 26px', borderRadius:10, fontSize:14, fontWeight:600, boxShadow:'0 4px 20px rgba(20,184,166,0.4)', whiteSpace:'nowrap' }}>{t.ctaBtn1}</a>
+          <a href={CONTACT} style={{ background:'linear-gradient(135deg,#FFC100,#F5D000)', color:'#fff', textDecoration:'none', padding:'13px 26px', borderRadius:10, fontSize:14, fontWeight:600, boxShadow:'0 4px 20px rgba(255,193,0,0.4)', whiteSpace:'nowrap' }}>{t.ctaBtn1}</a>
           <a href={HOME} style={{ background:'rgba(255,255,255,0.08)', color:'rgba(255,255,255,0.85)', textDecoration:'none', padding:'13px 26px', borderRadius:10, fontSize:14, fontWeight:600, border:'1px solid rgba(255,255,255,0.15)', whiteSpace:'nowrap', transition:'background 0.2s' }}
             onMouseEnter={e=>e.currentTarget.style.background='rgba(255,255,255,0.14)'} onMouseLeave={e=>e.currentTarget.style.background='rgba(255,255,255,0.08)'}>{t.ctaBtn2}</a>
         </div>
@@ -469,7 +469,7 @@ function Footer({ t, lang }) {
     <footer style={{ background:'var(--bg2)', borderTop:'1px solid var(--border)', padding:'clamp(20px,3vw,40px) clamp(16px,5vw,80px)' }}>
       <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:16 }}>
         <div style={{ display:'flex', alignItems:'center', gap:10 }}>
-          <div style={{ width:30, height:30, borderRadius:7, background:'linear-gradient(135deg,#14b8a6,#0f766e)', display:'flex', alignItems:'center', justifyContent:'center' }}>
+          <div style={{ width:30, height:30, borderRadius:7, background:'linear-gradient(135deg,#FFC100,#F5D000)', display:'flex', alignItems:'center', justifyContent:'center' }}>
             <span style={{ color:'#fff', fontSize:13, fontWeight:800, fontFamily:'Sora,sans-serif' }}>A</span>
           </div>
           <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:15, color:'var(--text)' }}>Access Infra</span>
@@ -477,7 +477,7 @@ function Footer({ t, lang }) {
         <div style={{ display:'flex', gap:20, flexWrap:'wrap' }}>
           {[[nav.home,HOME],[nav.about,ABOUT],[nav.vendor,HOME],[nav.govt,GOVT],[nav.contact,CONTACT]].map(([l,h]) => (
             <a key={l+h} href={h} style={{ color:'var(--text3)', textDecoration:'none', fontSize:12.5, transition:'color 0.2s' }}
-              onMouseEnter={e=>e.target.style.color='#14b8a6'} onMouseLeave={e=>e.target.style.color='var(--text3)'}>{l}</a>
+              onMouseEnter={e=>e.target.style.color='#FFC100'} onMouseLeave={e=>e.target.style.color='var(--text3)'}>{l}</a>
           ))}
         </div>
         <p style={{ color:'var(--text3)', fontSize:12 }}>{t.footerCopy}</p>
