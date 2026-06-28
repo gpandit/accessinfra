@@ -109,19 +109,25 @@ function ContextImage({ label, gradient }) {
   );
 }
 
+// Single silhouette of India — incl. the Jammu & Kashmir / Ladakh peak in
+// the north, the narrow north-eastern-states neck, and the Gujarat/Kutch
+// bulge in the west. A decorative outline, not a precise cartographic
+// boundary.
+const INDIA_OUTLINE_PATH = 'M95,6 L118,20 L108,35 L135,30 L148,40 L152,55 '
+  + 'L185,45 L190,80 L170,95 L148,88 L148,120 L155,150 '
+  + 'L130,205 L110,222 L95,195 L85,160 L78,130 L55,110 '
+  + 'L25,88 L35,60 L60,30 Z';
+
 function IndiaLogoBadge() {
-  const polys = AI_SHAPES.INDIA_STATE_POLYGONS;
   return (
     <div role="img" aria-label="Access Infra Consulting logo within the outline of India"
       style={{ position:'relative', width:'100%', aspectRatio:'4/3', borderRadius:16, background:'linear-gradient(135deg,#1a56db14,#1e3a8a14)', boxShadow:'var(--shadow)', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden' }}>
-      <svg viewBox="10 10 180 130" preserveAspectRatio="xMidYMid meet" style={{ position:'absolute', width:'86%', height:'86%' }}>
-        {polys.map((poly,i) => (
-          <polygon key={i} points={poly.map(p=>p.join(',')).join(' ')} fill="rgba(26,86,219,0.1)" stroke="#1a56db" strokeWidth="0.6" strokeLinejoin="round" />
-        ))}
+      <svg viewBox="0 0 200 230" preserveAspectRatio="xMidYMid meet" style={{ position:'absolute', width:'68%', height:'68%' }}>
+        <path d={INDIA_OUTLINE_PATH} fill="rgba(26,86,219,0.14)" stroke="#1a56db" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" />
       </svg>
-      <div style={{ position:'relative', display:'flex', flexDirection:'column', alignItems:'center', gap:8, background:'var(--surface)', padding:'18px 26px', borderRadius:14, boxShadow:'var(--shadow-lg)' }}>
+      <div style={{ position:'relative', display:'flex', flexDirection:'column', alignItems:'center', gap:8, background:'#fff', padding:'18px 26px', borderRadius:14, boxShadow:'var(--shadow-lg)' }}>
         <img src={LOGO_URL} alt="Access Infra" style={{ width:'clamp(140px,16vw,200px)', height:'auto', display:'block' }} />
-        <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:13, letterSpacing:'0.28em', textTransform:'uppercase', color:'var(--text2)' }}>Consulting</span>
+        <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:13, letterSpacing:'0.28em', textTransform:'uppercase', color:'#334155' }}>Consulting</span>
       </div>
     </div>
   );
