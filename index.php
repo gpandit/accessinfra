@@ -13,10 +13,10 @@
   --shadow-lg: 0 12px 48px rgba(49,92,43,0.14);
 }
 [data-theme="dark"] {
-  --bg: #080f1e; --bg2: #0d1a30; --bg3: #132040;
-  --surface: #0f1f3d; --surface2: #132040;
-  --text: #f1f5f9; --text2: #cbd5e1; --text3: #94a3b8;
-  --border: #1e3254;
+  --bg: #0c150a; --bg2: #142410; --bg3: #1f3417;
+  --surface: #16280f; --surface2: #1f3417;
+  --text: #f1f5f9; --text2: #cbd5e1; --text3: #9bb08f;
+  --border: #2f4a22;
   --shadow: 0 4px 24px rgba(0,0,0,0.4);
   --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
 }
@@ -57,6 +57,7 @@ const HOME     = SITE_URL + '/';
 const ABOUT    = SITE_URL + '/about/';
 const GOVT     = SITE_URL + '/government-departments/';
 const CONTACT  = SITE_URL + '/contact/';
+const LOGO_URL = SITE_URL + '/assets/img/logo.png';
 
 const LANGS = [
   { code:'en', label:'EN',    full:'English' },
@@ -274,24 +275,18 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
   const t = T[lang];
   const links = [
     { label:t.nav.home,        href:HOME,    active:true },
-    { label:t.nav.about,       href:ABOUT },
     { label:t.nav.services,    href:ABOUT+'#services' },
     { label:t.nav.smartSchool, href:ABOUT+'#smart-school' },
     { label:t.nav.caseStudies, href:ABOUT+'#case-studies' },
     { label:t.nav.govt,        href:GOVT },
+    { label:t.nav.about,       href:ABOUT },
     { label:t.nav.contact,     href:CONTACT },
   ];
   return (
     <nav className="ai-nav" style={{ position:'sticky', top:0, left:0, right:0, zIndex:100, background:'var(--surface)', borderBottom:'1px solid var(--border)', boxShadow:scrolled?'var(--shadow)':'none', backdropFilter:'blur(12px)', transition:'box-shadow 0.3s', padding:'0 clamp(16px,5vw,80px)' }}>
       <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', alignItems:'center', justifyContent:'space-between', height:68 }}>
-        <a href={HOME} style={{ textDecoration:'none', display:'flex', alignItems:'center', gap:10 }}>
-          <div style={{ width:36, height:36, borderRadius:8, background:'linear-gradient(135deg,#FFC100,#F5D000)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-            <span style={{ color:'#fff', fontSize:16, fontWeight:800, fontFamily:'Sora,sans-serif' }}>A</span>
-          </div>
-          <div>
-            <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:nfs+4, color:'var(--text)', letterSpacing:'-0.3px' }}>Access Infra</span>
-            <div style={{ fontSize:nfs-3, color:'var(--text3)', letterSpacing:'0.08em', textTransform:'uppercase', marginTop:-2 }}>Consulting</div>
-          </div>
+        <a href={HOME} style={{ textDecoration:'none', display:'flex', alignItems:'center' }}>
+          <img src={LOGO_URL} alt="Access Infra" style={{ height:42, width:'auto', display:'block' }} />
         </a>
         <div className="desktop-nav" style={{ display:'flex', alignItems:'center', gap:2 }}>
           {links.map(l => (
@@ -463,14 +458,11 @@ function Footer({ t, lang }) {
   return (
     <footer style={{ background:'var(--bg2)', borderTop:'1px solid var(--border)', padding:'clamp(20px,3vw,40px) clamp(16px,5vw,80px)' }}>
       <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:16 }}>
-        <div style={{ display:'flex', alignItems:'center', gap:10 }}>
-          <div style={{ width:30, height:30, borderRadius:7, background:'linear-gradient(135deg,#FFC100,#F5D000)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-            <span style={{ color:'#fff', fontSize:13, fontWeight:800, fontFamily:'Sora,sans-serif' }}>A</span>
-          </div>
-          <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:15, color:'var(--text)' }}>Access Infra</span>
+        <div style={{ display:'flex', alignItems:'center' }}>
+          <img src={LOGO_URL} alt="Access Infra" style={{ height:32, width:'auto', display:'block' }} />
         </div>
         <div style={{ display:'flex', gap:20, flexWrap:'wrap' }}>
-          {[[nav.home,HOME],[nav.about,ABOUT],[nav.services,ABOUT+'#services'],[nav.smartSchool,ABOUT+'#smart-school'],[nav.caseStudies,ABOUT+'#case-studies'],[nav.govt,GOVT],[nav.contact,CONTACT]].map(([l,h]) => (
+          {[[nav.home,HOME],[nav.services,ABOUT+'#services'],[nav.smartSchool,ABOUT+'#smart-school'],[nav.caseStudies,ABOUT+'#case-studies'],[nav.govt,GOVT],[nav.about,ABOUT],[nav.contact,CONTACT]].map(([l,h]) => (
             <a key={h} href={h} style={{ color:'var(--text3)', textDecoration:'none', fontSize:12.5, transition:'color 0.2s' }}
               onMouseEnter={e=>e.target.style.color='#FFC100'} onMouseLeave={e=>e.target.style.color='var(--text3)'}>{l}</a>
           ))}

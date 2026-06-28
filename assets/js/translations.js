@@ -2,8 +2,8 @@
 window.TRANSLATIONS = {
   en: {
     nav: {
-      about: 'About', services: 'Services', smartSchool: 'Smart School',
-      caseStudies: 'Case Studies', gallery: 'Gallery',
+      home: 'Home', about: 'About Us', services: 'Services', smartSchool: 'Smart School',
+      caseStudies: 'Case Studies', gallery: 'Gallery', govt: 'Government Departments',
       testimonials: 'Testimonials', contact: 'Contact', contactCta: 'Contact Us',
     },
     hero: {
@@ -156,8 +156,8 @@ window.TRANSLATIONS = {
   // ── KANNADA ──────────────────────────────────────────────────────────────
   kn: {
     nav: {
-      about: 'ನಮ್ಮ ಬಗ್ಗೆ', services: 'ಸೇವೆಗಳು', smartSchool: 'ಸ್ಮಾರ್ಟ್ ಶಾಲೆ',
-      caseStudies: 'ಪ್ರಕರಣ ಅಧ್ಯಯನಗಳು', gallery: 'ಗ್ಯಾಲರಿ',
+      home: 'ಮುಖಪುಟ', about: 'ನಮ್ಮ ಬಗ್ಗೆ', services: 'ಸೇವೆಗಳು', smartSchool: 'ಸ್ಮಾರ್ಟ್ ಶಾಲೆ',
+      caseStudies: 'ಪ್ರಕರಣ ಅಧ್ಯಯನಗಳು', gallery: 'ಗ್ಯಾಲರಿ', govt: 'ಸರ್ಕಾರಿ ಇಲಾಖೆಗಳು',
       testimonials: 'ಪ್ರಶಂಸಾಪತ್ರಗಳು', contact: 'ಸಂಪರ್ಕಿಸಿ', contactCta: 'ಸಂಪರ್ಕಿಸಿ',
     },
     hero: {
@@ -305,8 +305,8 @@ window.TRANSLATIONS = {
   // ── HINDI ────────────────────────────────────────────────────────────────
   hi: {
     nav: {
-      about: 'हमारे बारे में', services: 'सेवाएं', smartSchool: 'स्मार्ट स्कूल',
-      caseStudies: 'केस स्टडीज़', gallery: 'गैलरी',
+      home: 'होम', about: 'हमारे बारे में', services: 'सेवाएं', smartSchool: 'स्मार्ट स्कूल',
+      caseStudies: 'केस स्टडीज़', gallery: 'गैलरी', govt: 'सरकारी विभाग',
       testimonials: 'प्रशंसापत्र', contact: 'संपर्क करें', contactCta: 'संपर्क करें',
     },
     hero: {

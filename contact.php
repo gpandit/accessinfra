@@ -119,10 +119,10 @@ $page_title = 'Contact — Access Infra';
   }
   body.admin-bar .ai-nav { top: 32px; }
   .ai-nav-brand {
-    font-size: 1.15rem; font-weight: 700; color: #fff;
-    text-decoration: none; letter-spacing: -0.02em;
+    display: flex; align-items: center;
+    text-decoration: none;
   }
-  .ai-nav-brand span { color: var(--teal); }
+  .ai-nav-brand img { height: 38px; width: auto; display: block; }
   .ai-nav-links { display: flex; gap: 0.25rem; list-style: none; align-items: center; }
   .ai-nav-links a {
     color: var(--text-muted); text-decoration: none;
@@ -264,8 +264,8 @@ $page_title = 'Contact — Access Infra';
     display: flex; flex-wrap: wrap; gap: 1rem;
     align-items: center; justify-content: space-between;
   }
-  .ai-footer-brand { font-weight: 700; font-size: 0.95rem; }
-  .ai-footer-brand span { color: var(--teal); }
+  .ai-footer-brand { display: flex; align-items: center; }
+  .ai-footer-brand img { height: 28px; width: auto; display: block; }
   .ai-footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
   .ai-footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; }
   .ai-footer-links a:hover { color: #fff; }
@@ -304,12 +304,15 @@ $page_title = 'Contact — Access Infra';
 <body>
 
 <nav class="ai-nav">
-  <a class="ai-nav-brand" href="<?php echo e(url('index.php')); ?>">Access<span>Infra</span></a>
+  <a class="ai-nav-brand" href="<?php echo e(url('index.php')); ?>"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra"></a>
   <button class="ai-nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
   <ul class="ai-nav-links" id="navLinks">
     <li><a href="<?php echo e(url('index.php')); ?>">Home</a></li>
-    <li><a href="<?php echo e(url('about.php')); ?>">About Us</a></li>
+    <li><a href="<?php echo e(url('about.php#services')); ?>">Services</a></li>
+    <li><a href="<?php echo e(url('about.php#smart-school')); ?>">Smart School</a></li>
+    <li><a href="<?php echo e(url('about.php#case-studies')); ?>">Case Studies</a></li>
     <li><a href="<?php echo e(url('government-departments.php')); ?>">Government Departments</a></li>
+    <li><a href="<?php echo e(url('about.php')); ?>">About Us</a></li>
     <li><a href="<?php echo e(url('contact.php')); ?>" class="active">Contact</a></li>
   </ul>
 </nav>
@@ -449,11 +452,14 @@ $page_title = 'Contact — Access Infra';
   </div><!-- .contact-grid -->
 
   <footer class="ai-footer">
-    <div class="ai-footer-brand">Access<span>Infra</span></div>
+    <div class="ai-footer-brand"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra"></div>
     <nav class="ai-footer-links">
       <a href="<?php echo e(url('index.php')); ?>">Home</a>
-      <a href="<?php echo e(url('about.php')); ?>">About Us</a>
+      <a href="<?php echo e(url('about.php#services')); ?>">Services</a>
+      <a href="<?php echo e(url('about.php#smart-school')); ?>">Smart School</a>
+      <a href="<?php echo e(url('about.php#case-studies')); ?>">Case Studies</a>
       <a href="<?php echo e(url('government-departments.php')); ?>">Government Departments</a>
+      <a href="<?php echo e(url('about.php')); ?>">About Us</a>
       <a href="<?php echo e(url('contact.php')); ?>">Contact</a>
     </nav>
     <p class="ai-footer-copy">&copy; <?php echo date('Y'); ?> Access Infra. All rights reserved. Karnataka &amp; Telangana.</p>

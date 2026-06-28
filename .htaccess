@@ -6,6 +6,7 @@ DirectoryIndex index.php
   RewriteRule ^government-departments/?$ government-departments.php [L]
   RewriteRule ^blog/?$ blog.php [L]
   RewriteRule ^blog/([a-z0-9-]+)/?$ blog-post.php?slug=$1 [L]
+  RewriteRule ^webmail/?$ webmail-login.php [L]
 </IfModule>
 
 # lib/.env and lib/*.php hold DB credentials and encryption keys — never serve them directly.

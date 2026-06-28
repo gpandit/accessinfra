@@ -13,10 +13,10 @@
   --shadow-lg: 0 12px 48px rgba(49,92,43,0.14);
 }
 [data-theme="dark"] {
-  --bg: #080f1e; --bg2: #0d1a30; --bg3: #132040;
-  --surface: #0f1f3d; --surface2: #132040;
-  --text: #f1f5f9; --text2: #cbd5e1; --text3: #94a3b8;
-  --border: #1e3254;
+  --bg: #0c150a; --bg2: #142410; --bg3: #1f3417;
+  --surface: #16280f; --surface2: #1f3417;
+  --text: #f1f5f9; --text2: #cbd5e1; --text3: #9bb08f;
+  --border: #2f4a22;
   --shadow: 0 4px 24px rgba(0,0,0,0.4);
   --shadow-lg: 0 12px 48px rgba(0,0,0,0.5);
 }
@@ -49,10 +49,11 @@ const HOME     = SITE_URL + '/';
 const ABOUT    = SITE_URL + '/about/';
 const GOVT     = SITE_URL + '/government-departments/';
 const CONTACT  = SITE_URL + '/contact/';
+const LOGO_URL = SITE_URL + '/assets/img/logo.png';
 
 const PDF_URL  = '<?php echo esc_js( url('assets') ); ?>/assets/uploads/KOPPAL-SMART CLASS.pdf';
 
-const GALLERY_COLORS = ['#1a4fba','#F5D000','#315C2B','#FFC100','#0d7d73','#143060'];
+const GALLERY_COLORS = ['#636940','#F5D000','#315C2B','#FFC100','#A9FDAC','#243d20'];
 const GALLERY_ICONS  = ['🖥️','🏫','📹','📷','👩‍🏫','🤝'];
 
 const FS_STEPS = [
@@ -68,7 +69,7 @@ const LANGS = [
 
 function Tag({ children, color='blue', light=false }) {
   const bg  = color==='teal'?(light?'rgba(245,208,0,0.2)':'rgba(245,208,0,0.1)'):(light?'rgba(255,193,0,0.2)':'rgba(255,193,0,0.1)');
-  const col = color==='teal'?'#F5D000':(light?'#93c5fd':'#FFC100');
+  const col = color==='teal'?'#F5D000':(light?'#A9FDAC':'#FFC100');
   return <span style={{ display:'inline-block', background:bg, color:col, fontSize:12, fontWeight:700, letterSpacing:'0.06em', textTransform:'uppercase', padding:'4px 12px', borderRadius:999 }}>{children}</span>;
 }
 
@@ -168,37 +169,26 @@ function Nav({ dark, toggleDark, lang, setLang, fsIdx, cycleFontSize }) {
     return () => window.removeEventListener('scroll', fn);
   }, []);
   const NAV_LINKS = [
-    { label:'Home', href:HOME },
-    { label:t.about, href:'#about' },
-    { label:t.services, href:'#services' },
+    { label:t.home,        href:HOME },
+    { label:t.services,    href:'#services' },
     { label:t.smartSchool, href:'#smart-school' },
     { label:t.caseStudies, href:'#case-studies' },
-    { label:t.gallery, href:'#gallery' },
-    { label:t.testimonials, href:'#testimonials' },
-    { label:'Vendor Consulting', href:HOME },
-    { label:'Govt. Departments', href:GOVT },
-    { label:'Contact', href:CONTACT },
+    { label:t.govt,        href:GOVT },
+    { label:t.about,       href:'#about' },
+    { label:t.contact,     href:CONTACT },
   ];
   return (
     <nav className="ai-nav" style={{ position:'sticky', top:0, left:0, right:0, zIndex:100, background:'var(--surface)', borderBottom:'1px solid var(--border)', boxShadow:scrolled?'var(--shadow)':'none', backdropFilter:'blur(12px)', transition:'box-shadow 0.3s', padding:'0 clamp(16px,5vw,80px)' }}>
       <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', alignItems:'center', justifyContent:'space-between', height:68 }}>
-        <a href={HOME} style={{ textDecoration:'none', display:'flex', alignItems:'center', gap:10 }}>
-          <div style={{ width:36, height:36, borderRadius:8, background:'linear-gradient(135deg,#FFC100,#F5D000)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-            <span style={{ color:'#fff', fontSize:16, fontWeight:800, fontFamily:'Sora,sans-serif' }}>A</span>
-          </div>
-          <div>
-            <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:17, color:'var(--text)', letterSpacing:'-0.3px' }}>Access Infra</span>
-            <div style={{ fontSize:10, color:'var(--text3)', letterSpacing:'0.08em', textTransform:'uppercase', marginTop:-2 }}>Consulting</div>
-          </div>
+        <a href={HOME} style={{ textDecoration:'none', display:'flex', alignItems:'center' }}>
+          <img src={LOGO_URL} alt="Access Infra" style={{ height:42, width:'auto', display:'block' }} />
         </a>
         <div className="desktop-nav" style={{ display:'flex', alignItems:'center', gap:2 }}>
-          {NAV_LINKS.slice(0,7).map(l => (
+          {NAV_LINKS.map(l => (
             <a key={l.label} href={l.href} style={{ color:'var(--text2)', textDecoration:'none', fontSize:13, fontWeight:500, padding:'6px 10px', borderRadius:6, transition:'all 0.15s' }}
               onMouseEnter={e=>{ e.target.style.color='#FFC100'; e.target.style.background='var(--bg2)'; }}
               onMouseLeave={e=>{ e.target.style.color='var(--text2)'; e.target.style.background='transparent'; }}>{l.label}</a>
           ))}
-          <a href={HOME} style={{ color:'var(--text2)', textDecoration:'none', fontSize:13, fontWeight:500, padding:'6px 10px', borderRadius:6, transition:'all 0.15s' }} onMouseEnter={e=>{ e.target.style.color='#FFC100'; e.target.style.background='var(--bg2)'; }} onMouseLeave={e=>{ e.target.style.color='var(--text2)'; e.target.style.background='transparent'; }}>Vendor Consulting</a>
-          <a href={GOVT} style={{ color:'var(--text2)', textDecoration:'none', fontSize:13, fontWeight:500, padding:'6px 10px', borderRadius:6, transition:'all 0.15s' }} onMouseEnter={e=>{ e.target.style.color='#FFC100'; e.target.style.background='var(--bg2)'; }} onMouseLeave={e=>{ e.target.style.color='var(--text2)'; e.target.style.background='transparent'; }}>Govt. Departments</a>
         </div>
         <div style={{ display:'flex', alignItems:'center', gap:8 }}>
           <div className="desktop-controls" style={{ display:'flex', alignItems:'center', gap:8 }}>
@@ -567,7 +557,7 @@ function Testimonials({ lang }) {
           {t.items.map((item,i) => (
             <Reveal key={i} delay={i*70}>
               <div style={{ background:'rgba(255,255,255,0.06)', backdropFilter:'blur(10px)', border:'1px solid rgba(255,255,255,0.1)', borderRadius:16, padding:26 }}>
-                <div style={{ color:'#3b82f6', fontSize:28, marginBottom:10, lineHeight:1 }}>"</div>
+                <div style={{ color:'#A9FDAC', fontSize:28, marginBottom:10, lineHeight:1 }}>"</div>
                 <p style={{ color:'rgba(255,255,255,0.8)', fontSize:14.5, lineHeight:1.8, marginBottom:18 }}>{item.text}</p>
                 <div>
                   <div style={{ fontWeight:600, color:'#fff', fontSize:13.5 }}>{item.name}</div>
@@ -586,24 +576,19 @@ function Footer({ lang }) {
   const t = T[lang];
   const nav = t.nav;
   const NAV_LINKS = [
-    { label:nav.about,        href:'#about' },
-    { label:nav.services,     href:'#services' },
-    { label:nav.smartSchool,  href:'#smart-school' },
-    { label:nav.caseStudies,  href:'#case-studies' },
-    { label:nav.gallery,      href:'#gallery' },
-    { label:nav.testimonials, href:'#testimonials' },
-    { label:'Contact',        href:CONTACT },
-    { label:'Vendor Consulting', href:HOME },
-    { label:'Govt. Departments', href:GOVT },
+    { label:nav.home,        href:HOME },
+    { label:nav.services,    href:'#services' },
+    { label:nav.smartSchool, href:'#smart-school' },
+    { label:nav.caseStudies, href:'#case-studies' },
+    { label:nav.govt,        href:GOVT },
+    { label:nav.about,       href:'#about' },
+    { label:nav.contact,     href:CONTACT },
   ];
   return (
     <footer style={{ background:'var(--bg2)', borderTop:'1px solid var(--border)', padding:'clamp(28px,4vw,52px) clamp(16px,5vw,80px)' }}>
       <div style={{ maxWidth:1280, margin:'0 auto', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:18 }}>
-        <div style={{ display:'flex', alignItems:'center', gap:10 }}>
-          <div style={{ width:32, height:32, borderRadius:7, background:'linear-gradient(135deg,#FFC100,#F5D000)', display:'flex', alignItems:'center', justifyContent:'center' }}>
-            <span style={{ color:'#fff', fontSize:14, fontWeight:800, fontFamily:'Sora,sans-serif' }}>A</span>
-          </div>
-          <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:16, color:'var(--text)' }}>Access Infra</span>
+        <div style={{ display:'flex', alignItems:'center' }}>
+          <img src={LOGO_URL} alt="Access Infra" style={{ height:32, width:'auto', display:'block' }} />
         </div>
         <div style={{ display:'flex', gap:20, flexWrap:'wrap' }}>
           {NAV_LINKS.map(l => (
@@ -626,6 +611,12 @@ function App() {
   useEffect(() => { document.documentElement.setAttribute('data-theme',dark?'dark':'light'); localStorage.setItem('ai-theme',dark?'dark':'light'); }, [dark]);
   useEffect(() => { document.body.setAttribute('data-lang',lang); localStorage.setItem('ai-lang',lang); document.documentElement.lang=lang; }, [lang]);
   useEffect(() => { localStorage.setItem('ai-fs',fsIdx); }, [fsIdx]);
+  useEffect(() => {
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) setTimeout(() => el.scrollIntoView({ behavior:'smooth', block:'start' }), 50);
+    }
+  }, []);
 
   const zoom = FS_STEPS[fsIdx].zoom;
   const props = { lang };

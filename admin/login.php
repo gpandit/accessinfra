@@ -61,7 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
   <div class="card">
-    <h1>Access Infra Admin</h1>
+    <div style="text-align:center;margin-bottom:6px;"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra" style="height:46px;width:auto;"></div>
+    <h1>Admin</h1>
     <p class="sub">Sign in to manage leads and blog content.</p>
     <?php if ($error): ?><div class="error"><?php echo e($error); ?></div><?php endif; ?>
     <form method="POST">

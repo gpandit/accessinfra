@@ -66,7 +66,7 @@ $me = current_user();
 <body>
 <div class="admin-shell">
   <aside class="admin-sidebar">
-    <div class="brand">Access Infra<br><span style="font-weight:400;font-size:12px;opacity:0.7;">Admin</span></div>
+    <div class="brand"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra" style="height:34px;width:auto;display:block;"><span style="font-weight:400;font-size:12px;opacity:0.7;display:block;margin-top:4px;">Admin</span></div>
     <nav>
       <a href="<?php echo e(admin_url('index.php')); ?>" class="<?php echo $active==='dashboard'?'active':''; ?>">Dashboard</a>
       <a href="<?php echo e(admin_url('leads.php')); ?>" class="<?php echo $active==='leads'?'active':''; ?>">Leads</a>
