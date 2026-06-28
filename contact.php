@@ -85,11 +85,11 @@ $page_title = 'Contact — Access Infra';
   /* ── Reset / Base ── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --navy: #0a1628;
-    --navy-mid: #0d1f3c;
-    --blue: #1a3a6e;
-    --accent: #2563eb;
-    --teal: #0891b2;
+    --navy: #042f2e;
+    --navy-mid: #0a4a44;
+    --blue: #0f766e;
+    --accent: #14b8a6;
+    --teal: #2dd4bf;
     --gold: #f59e0b;
     --text: #e2e8f0;
     --text-muted: #94a3b8;
@@ -110,7 +110,7 @@ $page_title = 'Contact — Access Infra';
   /* ── Nav ── */
   .ai-nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    background: rgba(10,22,40,0.95);
+    background: rgba(4,47,46,0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     padding: 0 2rem;
@@ -131,14 +131,14 @@ $page_title = 'Contact — Access Infra';
     transition: color 0.2s, background 0.2s;
   }
   .ai-nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
-  .ai-nav-links a.active { color: var(--accent); font-weight: 700; background: rgba(37,99,235,0.12); }
+  .ai-nav-links a.active { color: var(--accent); font-weight: 700; background: rgba(20,184,166,0.12); }
   .ai-nav-toggle { display: none; background: none; border: none; cursor: pointer; color: #fff; }
 
   /* ── Page wrapper ── */
   .contact-page {
     padding-top: 64px;
     min-height: 100vh;
-    background: linear-gradient(135deg, var(--navy) 0%, #0d2040 50%, #0a1628 100%);
+    background: linear-gradient(135deg, var(--navy) 0%, #0a3d38 50%, #042f2e 100%);
   }
   body.admin-bar .contact-page { padding-top: 96px; }
 
@@ -146,17 +146,16 @@ $page_title = 'Contact — Access Infra';
   .contact-hero {
     padding: 4rem 2rem 3rem;
     text-align: center;
-    background: linear-gradient(180deg, rgba(37,99,235,0.08) 0%, transparent 100%);
+    background: linear-gradient(135deg,#042f2e 0%,#0f766e 55%,#14b8a6 100%);
     border-bottom: 1px solid var(--border);
   }
   .contact-hero h1 {
     font-size: clamp(1.8rem, 4vw, 2.8rem);
     font-weight: 800; letter-spacing: -0.03em;
-    background: linear-gradient(135deg, #fff 0%, var(--teal) 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; margin-bottom: 0.75rem;
+    color: #fff;
+    margin-bottom: 0.75rem;
   }
-  .contact-hero p { color: var(--text-muted); max-width: 520px; margin: 0 auto; font-size: 1rem; }
+  .contact-hero p { color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto; font-size: 1rem; }
 
   /* ── Status banners ── */
   .ai-status-banner {
@@ -192,7 +191,7 @@ $page_title = 'Contact — Access Infra';
   }
   .info-icon {
     width: 42px; height: 42px; border-radius: 10px; flex-shrink: 0;
-    background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.25);
+    background: rgba(20,184,166,0.15); border: 1px solid rgba(20,184,166,0.25);
     display: flex; align-items: center; justify-content: center;
     font-size: 1.1rem;
   }
@@ -204,7 +203,7 @@ $page_title = 'Contact — Access Infra';
   .services-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
   .chip {
     font-size: 0.75rem; padding: 0.35rem 0.75rem; border-radius: 20px;
-    background: rgba(8,145,178,0.12); border: 1px solid rgba(8,145,178,0.25);
+    background: rgba(45,212,191,0.12); border: 1px solid rgba(45,212,191,0.25);
     color: var(--teal); font-weight: 500;
   }
 
@@ -236,7 +235,7 @@ $page_title = 'Contact — Access Infra';
   }
   .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.25); }
   .field input:focus, .field select:focus, .field textarea:focus {
-    border-color: var(--accent); background: rgba(37,99,235,0.06);
+    border-color: var(--accent); background: rgba(20,184,166,0.06);
   }
   .field select { cursor: pointer; }
   .field select option { background: var(--navy-mid); color: #fff; }
@@ -279,7 +278,7 @@ $page_title = 'Contact — Access Infra';
     .ai-nav-links.open {
       display: flex; flex-direction: column;
       position: fixed; top: 64px; left: 0; right: 0;
-      background: rgba(10,22,40,0.98); padding: 1rem;
+      background: rgba(4,47,46,0.98); padding: 1rem;
       border-bottom: 1px solid var(--border); gap: 0.25rem;
     }
     body.admin-bar .ai-nav-links.open { top: 96px; }
@@ -295,7 +294,7 @@ $page_title = 'Contact — Access Infra';
   /* ── Contact context image ── */
   .contact-image {
     width: 100%; aspect-ratio: 4/3; border-radius: var(--radius);
-    background: linear-gradient(135deg, rgba(37,99,235,0.18), rgba(8,145,178,0.18));
+    background: linear-gradient(135deg, rgba(20,184,166,0.18), rgba(45,212,191,0.18));
     border: 1px solid var(--border);
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 1.5rem;
