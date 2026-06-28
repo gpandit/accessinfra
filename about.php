@@ -51,6 +51,8 @@ const ABOUT    = SITE_URL + '/about/';
 const GOVT     = SITE_URL + '/government-departments/';
 const CONTACT  = SITE_URL + '/contact/';
 const LOGO_URL = SITE_URL + '/assets/img/logo.png';
+const PRIVACY  = SITE_URL + '/privacy-policy/';
+const COOKIEPOLICY = SITE_URL + '/cookie-policy/';
 
 const PDF_URL  = '<?php echo esc_js( url('assets') ); ?>/assets/uploads/KOPPAL-SMART CLASS.pdf';
 
@@ -584,6 +586,8 @@ function Footer({ lang }) {
     { label:nav.govt,        href:GOVT },
     { label:nav.about,       href:'#about' },
     { label:nav.contact,     href:CONTACT },
+    { label:'Privacy Policy', href:PRIVACY },
+    { label:'Cookie Policy',  href:COOKIEPOLICY },
   ];
   return (
     <footer style={{ background:'var(--bg2)', borderTop:'1px solid var(--border)', padding:'clamp(28px,4vw,52px) clamp(16px,5vw,80px)' }}>

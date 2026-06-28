@@ -46,6 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admin Login — Access Infra</title>
+<?php $site_root = preg_replace('#/admin$#', '', admin_url()); ?>
+<link rel="icon" type="image/x-icon" href="<?php echo e($site_root . '/favicon.ico'); ?>">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo e($site_root . '/assets/img/favicon-32x32.png'); ?>">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'Inter',-apple-system,sans-serif;background:#0c1f3f;min-height:100vh;display:flex;align-items:center;justify-content:center;}
@@ -61,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
   <div class="card">
-    <div style="text-align:center;margin-bottom:6px;"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra" style="height:46px;width:auto;"></div>
+    <div style="text-align:center;margin-bottom:6px;"><img src="<?php echo e($site_root . '/assets/img/logo.png'); ?>" alt="Access Infra" style="height:46px;width:auto;"></div>
     <h1>Admin</h1>
     <p class="sub">Sign in to manage leads and blog content.</p>
     <?php if ($error): ?><div class="error"><?php echo e($error); ?></div><?php endif; ?>

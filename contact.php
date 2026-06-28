@@ -44,21 +44,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ai_contact_submit']))
         error_log('lead insert failed: ' . $e->getMessage());
     }
 
-    $subject = "New Enquiry from {$name} — Access Infra Website";
-    $body  = "Name:             {$name}\n";
-    $body .= "Email:            {$email}\n";
-    $body .= "Phone/WhatsApp:   {$phone}\n";
-    $body .= "Organisation:     {$org}\n";
-    $body .= "Service Interest: {$service}\n\n";
-    $body .= "Message:\n{$message}\n";
-    $headers = "Content-Type: text/plain; charset=UTF-8\r\nReply-To: {$name} <{$email}>";
+    $subject  = "New Enquiry from {$name} — Access Infra Website";
+    $textBody = "Name:             {$name}\n";
+    $textBody .= "Email:            {$email}\n";
+    $textBody .= "Phone/WhatsApp:   {$phone}\n";
+    $textBody .= "Organisation:     {$org}\n";
+    $textBody .= "Service Interest: {$service}\n\n";
+    $textBody .= "Message:\n{$message}\n";
+    $htmlBody = '<p><strong>Name:</strong> ' . e($name) . '</p>'
+        . '<p><strong>Email:</strong> ' . e($email) . '</p>'
+        . '<p><strong>Phone/WhatsApp:</strong> ' . e($phone) . '</p>'
+        . '<p><strong>Organisation:</strong> ' . e($org) . '</p>'
+        . '<p><strong>Service Interest:</strong> ' . e($service) . '</p>'
+        . '<p><strong>Message:</strong><br>' . nl2br(e($message)) . '</p>';
 
-    $sent = @mail(ADMIN_EMAIL, $subject, $body, $headers);
+    require_once __DIR__ . '/lib/sendpulse.php';
+    $sent = sendpulse_send_email(ADMIN_EMAIL, 'Access Infra', $subject, $htmlBody, $textBody, $email);
+
+    if (!$sent) {
+        // Fall back to PHP mail() if SendPulse isn't configured or the request failed.
+        $headers = "Content-Type: text/plain; charset=UTF-8\r\nReply-To: {$name} <{$email}>";
+        $sent = @mail(ADMIN_EMAIL, $subject, $textBody, $headers);
+    }
 
     if ($sent) {
         $reply_subject = 'Thank you for reaching out — Access Infra Consulting';
-        $reply_body    = "Dear {$name},\n\nThank you for contacting Access Infra. We have received your message and will get back to you as soon as possible.\n\nBest regards,\nAccess Infra Consulting\n" . ADMIN_EMAIL . "\n" . SITE_URL;
-        @mail($email, $reply_subject, $reply_body, "Content-Type: text/plain; charset=UTF-8");
+        $reply_text = "Dear {$name},\n\nThank you for contacting Access Infra. We have received your message and will get back to you as soon as possible.\n\nBest regards,\nAccess Infra Consulting\n" . ADMIN_EMAIL . "\n" . SITE_URL;
+        $reply_html = '<p>Dear ' . e($name) . ',</p>'
+            . '<p>Thank you for contacting Access Infra. We have received your message and will get back to you as soon as possible.</p>'
+            . '<p>Best regards,<br>Access Infra Consulting<br>' . e(ADMIN_EMAIL) . '<br><a href="' . e(SITE_URL) . '">' . e(SITE_URL) . '</a></p>';
+
+        $replySent = sendpulse_send_email($email, $name, $reply_subject, $reply_html, $reply_text);
+        if (!$replySent) {
+            @mail($email, $reply_subject, $reply_text, "Content-Type: text/plain; charset=UTF-8");
+        }
     }
 
     unset($_SESSION['ai_contact_token']);
@@ -81,6 +100,9 @@ $page_title = 'Contact — Access Infra';
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?php echo e($page_title); ?></title>
+<link rel="icon" type="image/x-icon" href="<?php echo url('favicon.ico'); ?>">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo url('assets/img/favicon-32x32.png'); ?>">
+<link rel="apple-touch-icon" sizes="180x180" href="<?php echo url('assets/img/apple-touch-icon.png'); ?>">
 <style>
   /* ── Reset / Base ── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -113,7 +135,10 @@ $page_title = 'Contact — Access Infra';
     background: rgba(49,92,43,0.95);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
+    height: 64px;
+  }
+  .ai-nav-inner {
+    max-width: 1280px; margin: 0 auto; padding: 0 2rem;
     display: flex; align-items: center; justify-content: space-between;
     height: 64px;
   }
@@ -302,19 +327,26 @@ $page_title = 'Contact — Access Infra';
 </style>
 </head>
 <body>
+<script>
+  window.AI_PRIVACY_POLICY_URL = '<?php echo esc_js( url('privacy-policy.php') ); ?>';
+  window.AI_COOKIE_POLICY_URL  = '<?php echo esc_js( url('cookie-policy.php') ); ?>';
+</script>
+<script src="<?php echo url('assets/js/cookie-consent.js'); ?>"></script>
 
 <nav class="ai-nav">
-  <a class="ai-nav-brand" href="<?php echo e(url('index.php')); ?>"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra"></a>
-  <button class="ai-nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
-  <ul class="ai-nav-links" id="navLinks">
-    <li><a href="<?php echo e(url('index.php')); ?>">Home</a></li>
-    <li><a href="<?php echo e(url('about.php#services')); ?>">Services</a></li>
-    <li><a href="<?php echo e(url('about.php#smart-school')); ?>">Smart School</a></li>
-    <li><a href="<?php echo e(url('about.php#case-studies')); ?>">Case Studies</a></li>
-    <li><a href="<?php echo e(url('government-departments.php')); ?>">Government Departments</a></li>
-    <li><a href="<?php echo e(url('about.php')); ?>">About Us</a></li>
-    <li><a href="<?php echo e(url('contact.php')); ?>" class="active">Contact</a></li>
-  </ul>
+  <div class="ai-nav-inner">
+    <a class="ai-nav-brand" href="<?php echo e(url('index.php')); ?>"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra"></a>
+    <button class="ai-nav-toggle" id="navToggle" aria-label="Toggle navigation">&#9776;</button>
+    <ul class="ai-nav-links" id="navLinks">
+      <li><a href="<?php echo e(url('index.php')); ?>">Home</a></li>
+      <li><a href="<?php echo e(url('about.php#services')); ?>">Services</a></li>
+      <li><a href="<?php echo e(url('about.php#smart-school')); ?>">Smart School</a></li>
+      <li><a href="<?php echo e(url('about.php#case-studies')); ?>">Case Studies</a></li>
+      <li><a href="<?php echo e(url('government-departments.php')); ?>">Government Departments</a></li>
+      <li><a href="<?php echo e(url('about.php')); ?>">About Us</a></li>
+      <li><a href="<?php echo e(url('contact.php')); ?>" class="active">Contact</a></li>
+    </ul>
+  </div>
 </nav>
 
 <div class="contact-page">

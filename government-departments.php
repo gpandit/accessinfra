@@ -49,6 +49,8 @@ const ABOUT   = SITE_URL + '/about/';
 const GOVT    = SITE_URL + '/government-departments/';
 const CONTACT = SITE_URL + '/contact/';
 const LOGO_URL = SITE_URL + '/assets/img/logo.png';
+const PRIVACY  = SITE_URL + '/privacy-policy/';
+const COOKIEPOLICY = SITE_URL + '/cookie-policy/';
 
 const LANGS = [
   { code:'en', label:'EN',    full:'English'  },
@@ -469,7 +471,7 @@ function Footer({ t, lang }) {
           <img src={LOGO_URL} alt="Access Infra" style={{ height:32, width:'auto', display:'block' }} />
         </div>
         <div style={{ display:'flex', gap:20, flexWrap:'wrap' }}>
-          {[[nav.home,HOME],[nav.services,ABOUT+'#services'],[nav.smartSchool,ABOUT+'#smart-school'],[nav.caseStudies,ABOUT+'#case-studies'],[nav.govt,GOVT],[nav.about,ABOUT],[nav.contact,CONTACT]].map(([l,h]) => (
+          {[[nav.home,HOME],[nav.services,ABOUT+'#services'],[nav.smartSchool,ABOUT+'#smart-school'],[nav.caseStudies,ABOUT+'#case-studies'],[nav.govt,GOVT],[nav.about,ABOUT],[nav.contact,CONTACT],['Privacy Policy',PRIVACY],['Cookie Policy',COOKIEPOLICY]].map(([l,h]) => (
             <a key={l+h} href={h} style={{ color:'var(--text3)', textDecoration:'none', fontSize:12.5, transition:'color 0.2s' }}
               onMouseEnter={e=>e.target.style.color='#FFC100'} onMouseLeave={e=>e.target.style.color='var(--text3)'}>{l}</a>
           ))}

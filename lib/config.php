@@ -9,9 +9,11 @@
 require_once __DIR__ . '/env.php';
 load_env_file(__DIR__ . '/.env');
 
+if (!function_exists('env_value')) {
 function env_value($key, $default = '') {
   $v = getenv($key);
   return ($v === false || $v === '') ? $default : $v;
+}
 }
 
 // ════════ SITE ════════

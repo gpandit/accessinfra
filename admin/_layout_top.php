@@ -13,6 +13,9 @@ $me = current_user();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo e($page_title); ?> — Access Infra Admin</title>
+<?php $site_root = preg_replace('#/admin$#', '', admin_url()); ?>
+<link rel="icon" type="image/x-icon" href="<?php echo e($site_root . '/favicon.ico'); ?>">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo e($site_root . '/assets/img/favicon-32x32.png'); ?>">
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   :root{
@@ -66,7 +69,7 @@ $me = current_user();
 <body>
 <div class="admin-shell">
   <aside class="admin-sidebar">
-    <div class="brand"><img src="<?php echo e(url('assets/img/logo.png')); ?>" alt="Access Infra" style="height:34px;width:auto;display:block;"><span style="font-weight:400;font-size:12px;opacity:0.7;display:block;margin-top:4px;">Admin</span></div>
+    <div class="brand"><img src="<?php echo e($site_root . '/assets/img/logo.png'); ?>" alt="Access Infra" style="height:34px;width:auto;display:block;"><span style="font-weight:400;font-size:12px;opacity:0.7;display:block;margin-top:4px;">Admin</span></div>
     <nav>
       <a href="<?php echo e(admin_url('index.php')); ?>" class="<?php echo $active==='dashboard'?'active':''; ?>">Dashboard</a>
       <a href="<?php echo e(admin_url('leads.php')); ?>" class="<?php echo $active==='leads'?'active':''; ?>">Leads</a>

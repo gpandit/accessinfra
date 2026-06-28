@@ -7,6 +7,8 @@ DirectoryIndex index.php
   RewriteRule ^blog/?$ blog.php [L]
   RewriteRule ^blog/([a-z0-9-]+)/?$ blog-post.php?slug=$1 [L]
   RewriteRule ^webmail/?$ webmail-login.php [L]
+  RewriteRule ^privacy-policy/?$ privacy-policy.php [L]
+  RewriteRule ^cookie-policy/?$ cookie-policy.php [L]
 </IfModule>
 
 # lib/.env and lib/*.php hold DB credentials and encryption keys — never serve them directly.

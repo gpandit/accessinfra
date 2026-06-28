@@ -5,6 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Webmail Login — Access Infra</title>
+<link rel="icon" type="image/x-icon" href="<?php echo url('favicon.ico'); ?>">
+<link rel="icon" type="image/png" sizes="32x32" href="<?php echo url('assets/img/favicon-32x32.png'); ?>">
+<link rel="apple-touch-icon" sizes="180x180" href="<?php echo url('assets/img/apple-touch-icon.png'); ?>">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
