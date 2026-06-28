@@ -24,7 +24,7 @@ html { scroll-behavior: smooth; }
 body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); transition:background 0.3s,color 0.3s; line-height:1.6; overflow-x:hidden; }
 body[data-lang="kn"] { font-family:'Noto Sans Kannada',sans-serif; }
 body[data-lang="hi"] { font-family:'Noto Sans Devanagari',sans-serif; }
-h1, h2, h3, h4 { font-family:'Sora',sans-serif; line-height:1.2; }
+h1, h2, h3, h4 { font-family:'Miloner','Sora',sans-serif; line-height:1.2; }
 body[data-lang="kn"] h1, body[data-lang="kn"] h2, body[data-lang="kn"] h3, body[data-lang="kn"] h4 { font-family:'Noto Sans Kannada',sans-serif; }
 body[data-lang="hi"] h1, body[data-lang="hi"] h2, body[data-lang="hi"] h3, body[data-lang="hi"] h4 { font-family:'Noto Sans Devanagari',sans-serif; }
 ::selection { background:#1a56db33; }
@@ -55,6 +55,7 @@ const ABOUT    = SITE_URL + '/about/';
 const GOVT     = SITE_URL + '/government-departments/';
 const CONTACT  = SITE_URL + '/contact/';
 const LOGO_URL = '<?php echo esc_js( asset_url("assets/img/logo.png") ); ?>';
+const INDIA_MAP_URL = '<?php echo esc_js( asset_url("assets/img/india-map.png") ); ?>';
 const PRIVACY  = SITE_URL + '/privacy-policy/';
 const COOKIEPOLICY = SITE_URL + '/cookie-policy/';
 
@@ -109,24 +110,13 @@ function ContextImage({ label, gradient }) {
   );
 }
 
-// Single silhouette of India — incl. the Jammu & Kashmir / Ladakh peak in
-// the north, the narrow north-eastern-states neck, and the Gujarat/Kutch
-// bulge in the west. A decorative outline, not a precise cartographic
-// boundary.
-const INDIA_OUTLINE_PATH = 'M95,6 L118,20 L108,35 L135,30 L148,40 L152,55 '
-  + 'L185,45 L190,80 L170,95 L148,88 L148,120 L155,150 '
-  + 'L130,205 L110,222 L95,195 L85,160 L78,130 L55,110 '
-  + 'L25,88 L35,60 L60,30 Z';
-
 function IndiaLogoBadge() {
   return (
-    <div role="img" aria-label="Access Infra Consulting logo within the outline of India"
+    <div role="img" aria-label="Access Infra Consulting logo over a map of India"
       style={{ position:'relative', width:'100%', aspectRatio:'4/3', borderRadius:16, background:'linear-gradient(135deg,#1a56db14,#1e3a8a14)', boxShadow:'var(--shadow)', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden' }}>
-      <svg viewBox="0 0 200 230" preserveAspectRatio="xMidYMid meet" style={{ position:'absolute', width:'68%', height:'68%' }}>
-        <path d={INDIA_OUTLINE_PATH} fill="rgba(26,86,219,0.14)" stroke="#1a56db" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round" />
-      </svg>
-      <div style={{ position:'relative', display:'flex', flexDirection:'column', alignItems:'center', gap:8, background:'#fff', padding:'18px 26px', borderRadius:14, boxShadow:'var(--shadow-lg)' }}>
-        <img src={LOGO_URL} alt="Access Infra" style={{ width:'clamp(140px,16vw,200px)', height:'auto', display:'block' }} />
+      <img src={INDIA_MAP_URL} alt="" aria-hidden="true" style={{ position:'absolute', width:'70%', height:'70%', objectFit:'contain' }} />
+      <div style={{ position:'relative', display:'flex', flexDirection:'column', alignItems:'center', gap:8, background:'rgba(255,255,255,0.62)', backdropFilter:'blur(3px)', padding:'18px 26px', borderRadius:14, boxShadow:'var(--shadow-lg)' }}>
+        <img src={LOGO_URL} alt="Access Infra" style={{ width:'clamp(140px,16vw,200px)', height:'auto', display:'block', opacity:0.88 }} />
         <span style={{ fontFamily:'Sora,sans-serif', fontWeight:700, fontSize:13, letterSpacing:'0.28em', textTransform:'uppercase', color:'#334155' }}>Consulting</span>
       </div>
     </div>

@@ -25,7 +25,7 @@ body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); 
 body[data-lang="kn"] { font-family:'Noto Sans Kannada',sans-serif; }
 body[data-lang="hi"] { font-family:'Noto Sans Devanagari',sans-serif; }
 body[data-lang="te"] { font-family:'Noto Sans Telugu',sans-serif; }
-h1, h2, h3, h4 { font-family:'Sora',sans-serif; line-height:1.15; letter-spacing:0.04em; font-weight:800; }
+h1, h2, h3, h4 { font-family:'Miloner','Sora',sans-serif; line-height:1.15; letter-spacing:0.04em; font-weight:800; }
 body[data-lang="kn"] h1, body[data-lang="kn"] h2, body[data-lang="kn"] h3, body[data-lang="kn"] h4 { font-family:'Noto Sans Kannada',sans-serif; letter-spacing:0; }
 body[data-lang="hi"] h1, body[data-lang="hi"] h2, body[data-lang="hi"] h3, body[data-lang="hi"] h4 { font-family:'Noto Sans Devanagari',sans-serif; letter-spacing:0; }
 body[data-lang="te"] h1, body[data-lang="te"] h2, body[data-lang="te"] h3, body[data-lang="te"] h4 { font-family:'Noto Sans Telugu',sans-serif; letter-spacing:0; }

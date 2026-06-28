@@ -1,3 +1,14 @@
 /* Access Infra — base site styles (standalone PHP build) */
 * { box-sizing: border-box; }
 body { margin: 0; }
+
+/* Miloner — trial heading font (English only). Sora stays as the fallback
+   in every font-family stack so it's a one-line revert if this doesn't
+   test well: just drop 'Miloner', from each heading rule. */
+@font-face {
+  font-family: 'Miloner';
+  src: url('../fonts/Miloner-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
