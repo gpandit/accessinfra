@@ -14,7 +14,7 @@
 }
 [data-theme="dark"] {
   --bg: #080f1e; --bg2: #0d1a30; --bg3: #132040;
-  --surface: #0f1f3d; --surface2: #132040;
+  --surface: #1c3a6b; --surface2: #132040;
   --text: #f1f5f9; --text2: #cbd5e1; --text3: #94a3b8;
   --border: #1e3254;
   --shadow: 0 4px 24px rgba(0,0,0,0.4);
@@ -196,8 +196,8 @@ const VENDORS = [
 ];
 
 function Tag({ children, color='blue' }) {
-  const bg  = color==='teal'?'rgba(30,58,138,0.1)':'rgba(26,86,219,0.1)';
-  const col = color==='teal'?'#1e3a8a':'#1a56db';
+  const bg  = color==='teal'?'rgba(30,58,138,0.1)':color==='white'?'rgba(255,255,255,0.18)':'rgba(26,86,219,0.1)';
+  const col = color==='teal'?'#1e3a8a':color==='white'?'#ffffff':'#1a56db';
   return <span style={{ display:'inline-block', background:bg, color:col, fontSize:12, fontWeight:700, letterSpacing:'0.06em', textTransform:'uppercase', padding:'4px 12px', borderRadius:999 }}>{children}</span>;
 }
 
@@ -335,7 +335,7 @@ function Hero({ t }) {
       <DotMorph shapes={AI_SHAPES.INFRA} labels={t.heroLabels} fullBleed />
       <div style={{ position:'absolute', inset:0, zIndex:1, background:'linear-gradient(180deg,rgba(12,31,63,0.35) 0%,rgba(12,31,63,0.55) 100%)' }}></div>
       <div style={{ maxWidth:1280, margin:'0 auto', width:'100%', position:'relative', zIndex:2 }}>
-        <Tag>{t.heroTag}</Tag>
+        <Tag color="white">{t.heroTag}</Tag>
         <h1 style={{ fontSize:'clamp(32px,5vw,62px)', fontWeight:800, marginTop:16, marginBottom:20, lineHeight:1.08, maxWidth:780, textWrap:'pretty', color:'#fff' }}>
           {t.heroH1a}<br />
           <span style={{ color:'#93c5fd' }}>{t.heroH1b}</span>
